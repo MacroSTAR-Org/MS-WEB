@@ -1,0 +1,39 @@
+---
+import "@/styles/global.css";
+import Footer from "../components/layout/Footer";
+import Header from "../components/layout/Header";
+import { ClientRouter } from "astro:transitions";
+import AOSInit from "../components/AOSInit.astro";
+import { SITE } from "../data/site";
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title ? `${title} - ${SITE.title}` : SITE.title}</title>
+    <ClientRouter />
+  </head>
+  <body>
+    <Header client:load />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <AOSInit />
+  </body>
+</html>
+
+<style>
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>

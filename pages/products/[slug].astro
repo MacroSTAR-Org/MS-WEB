@@ -1,0 +1,203 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Button, TransparentButton } from "../../components/ui/Button";
+import { PRODUCTS, PRODUCT_COMMON as C } from "../../data/site";
+
+export function getStaticPaths() {
+  return PRODUCTS.map((product) => ({
+    params: { slug: product.slug },
+    props: { product },
+  }));
+}
+
+const { product } = Astro.props;
+const others = PRODUCTS.filter((p) => p.slug !== product.slug);
+---
+
+<Layout title={product.title} transition:animate="slide">
+  <!-- ============ 产品 Hero ============ -->
+  <section class="relative flex min-h-[70vh] w-full items-center overflow-hidden">
+    <div
+      class="absolute inset-0"
+      style="background: radial-gradient(ellipse at right top, #2b3a67 0%, #11121c 55%, #3d2e5c 100%);"
+    >
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-t from-[#11121c] to-transparent">
+    </div>
+    <div
+      class="max-w-8xl relative z-10 mx-auto flex w-full flex-col items-start gap-4 px-8 pt-32 pb-16 md:px-12 lg:px-16 xl:px-24"
+    >
+      <div class="text-sm text-gray-400" data-aos="fade-down">
+        <a href="/" class="transition-colors hover:text-white"
+          >{C.breadcrumbHome}</a
+        >
+        <span class="mx-1">&rsaquo;</span>
+        <span>{product.title}</span>
+      </div>
+      <span
+        class="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs tracking-wide text-gray-300 backdrop-blur-sm"
+        data-aos="fade-right"
+      >
+        {product.tagline}
+      </span>
+      <h1
+        class="text-4xl leading-snug font-semibold lg:text-5xl xl:text-6xl"
+        data-aos="zoom-in-right"
+      >
+        {product.title}
+      </h1>
+      <h2
+        class="gradient-text text-2xl font-semibold lg:text-3xl"
+        data-aos="zoom-in-right"
+        data-aos-delay="100"
+      >
+        {product.subtitle}
+      </h2>
+      {
+        product.desc && (
+          <p
+            class="max-w-xl text-lg text-gray-300"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            {product.desc}
+          </p>
+        )
+      }
+      <div
+        class="mt-4 flex flex-col gap-4 md:flex-row"
+        data-aos="fade-up"
+        data-aos-delay="300"
+      >
+        <Button href="#overview" className="flex w-fit items-center gap-2">
+          <span class="text-lg">{C.learnMore}</span>
+        </Button>
+        <TransparentButton
+          href="/#contact"
+          className="flex w-fit items-center gap-2"
+        >
+          <span class="text-lg">{C.consult}</span>
+        </TransparentButton>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-8xl mx-auto flex flex-col gap-24 overflow-hidden px-8 py-16 md:px-12 lg:px-16 xl:px-24">
+    <!-- ============ 产品概述 ============ -->
+    <section id="overview" class="scroll-mt-24">
+      <div class="mb-8 flex flex-col gap-4" data-aos="fade-up">
+        <h2 class="text-3xl font-semibold lg:text-4xl">{C.overviewTitle}</h2>
+        <p class="text-lg text-gray-400">{product.overviewSub}</p>
+      </div>
+      <div
+        class="flex flex-col gap-4 text-gray-300"
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
+        {product.paragraphs.map((p) => <p class="leading-relaxed">{p}</p>)}
+        <h3 class="mt-4 text-xl font-semibold text-white">{C.advTitle}</h3>
+        <p class="leading-relaxed">{product.advantage}</p>
+      </div>
+    </section>
+
+    <!-- ============ 核心特性 ============ -->
+    <section>
+      <div class="mb-12 flex flex-col gap-4" data-aos="fade-up">
+        <h2 class="text-3xl font-semibold lg:text-4xl">{C.featuresTitle}</h2>
+        <p class="text-lg text-gray-400">{product.featuresSub}</p>
+      </div>
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+        {
+          product.features.map((f, idx) => (
+            <div
+              class="ease-bounce flex flex-col gap-3 rounded-2xl border border-white/10 bg-white/5 p-8 transition-all duration-500 hover:scale-[1.03] hover:bg-white/10"
+              data-aos="fade-up"
+              data-aos-delay={idx * 100}
+            >
+              <span class="text-3xl">{f.icon}</span>
+              <h4 class="text-xl font-semibold">{f.title}</h4>
+              <p class="text-gray-400">{f.desc}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- ============ 技术参数 ============ -->
+    <section>
+      <div class="mb-8 flex flex-col gap-4" data-aos="fade-up">
+        <h2 class="text-3xl font-semibold lg:text-4xl">{C.specsTitle}</h2>
+        <p class="text-lg text-gray-400">{C.specsSub}</p>
+      </div>
+      <div
+        class="divide-y divide-white/10 overflow-hidden rounded-2xl border border-white/10"
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
+        {
+          product.specs.map((s) => (
+            <div class="flex flex-col gap-1 bg-white/5 px-6 py-4 md:flex-row md:items-center md:gap-8">
+              <span class="w-40 shrink-0 text-sm text-gray-400">{s.label}</span>
+              <span class="text-gray-200">{s.value}</span>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- ============ CTA 咨询 ============ -->
+    <section
+      class="relative overflow-hidden rounded-2xl border border-white/10 p-12 text-center lg:p-16"
+      data-aos="zoom-in"
+    >
+      <div
+        class="absolute inset-0"
+        style="background: radial-gradient(ellipse at center, #2b3a67 0%, #11121c 80%);"
+      >
+      </div>
+      <div class="relative z-10 flex flex-col items-center gap-4">
+        <h2 class="text-3xl font-semibold lg:text-4xl">{C.ctaTitle}</h2>
+        <p class="text-lg text-gray-300">{product.ctaSub}</p>
+        <div class="mt-4 flex flex-col gap-4 md:flex-row">
+          <Button
+            href={`mailto:${product.email}`}
+            className="flex w-fit items-center gap-2"
+          >
+            <span class="text-lg">{C.ctaEmail}</span>
+          </Button>
+          <TransparentButton
+            href="/#contact"
+            className="flex w-fit items-center gap-2"
+          >
+            <span class="text-lg">{C.ctaBack}</span>
+          </TransparentButton>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 其他产品 ============ -->
+    <section>
+      <h2 class="mb-8 text-3xl font-semibold lg:text-4xl" data-aos="fade-up">
+        {C.othersTitle}
+      </h2>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {
+          others.map((p, idx) => (
+            <a
+              href={`/products/${p.slug}`}
+              class="ease-bounce group flex flex-col gap-2 rounded-2xl border border-white/10 bg-white/5 p-6 transition-all duration-500 hover:scale-[1.03] hover:bg-white/10"
+              data-aos="fade-up"
+              data-aos-delay={idx * 50}
+            >
+              <span class="text-lg font-semibold">{p.title}</span>
+              <span class="text-sm text-gray-400">{p.subtitle}</span>
+              <span class="mt-2 text-sm text-blue-400 transition-colors group-hover:text-blue-300">
+                {C.viewDetail}
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+  </div>
+</Layout>

@@ -1,0 +1,77 @@
+@import "tailwindcss";
+@import "aos/dist/aos.css";
+
+@keyframes bannerSlideIn {
+  0% {
+    transform: translateX(20%) translateY(20%);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+    opacity: 0.55;
+  }
+}
+
+.banner-slide-in {
+  animation: bannerSlideIn 0.5s ease-out forwards;
+  opacity: 0.1; /* 初始状态确保半透明 */
+}
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.hero-fade-in {
+  animation: heroFadeIn 1s ease-out forwards;
+  opacity: 0; /* 初始完全透明，避免首帧闪现 */
+}
+
+:root {
+  --color-background: #11121c;
+  --color-foreground: #ffffff;
+
+  --ease-bounce: cubic-bezier(0.84, 0, 0.165, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --container-8xl: 96rem;
+}
+
+@theme {
+  --ease-bounce: cubic-bezier(0.84, 0, 0.165, 1);
+  --container-8xl: 96rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
+
+/* 动态渐变文本效果（借鉴 official_website） */
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.gradient-text {
+  background: linear-gradient(45deg, #4f7cff, #8b5cf6, #26d0ce, #4f7cff);
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-animation 4s ease infinite;
+}
