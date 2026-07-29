@@ -1,6 +1,9 @@
 # build output
 dist/
 
+# 原始字体源文件（仅用于本地子集化，不入库；子集产物在 public/fonts/ 已提交）
+assets/fonts/
+
 # generated types
 .astro/
 

@@ -107,7 +107,7 @@ MS-WEB/
 │   └── global.css            # 全局样式：Tailwind 入口、主题变量、动画、gradient-text
 │
 ├── assets/
-│   └── images/               # 经构建管线处理的图片（hero.jpg、ai.png）
+│   └── images/               # 经构建管线处理的图片（herodark.jpg / herolight.jpg、ai.png）
 │
 ├── public/                   # 原样拷贝到站点根目录的静态资源
 │   └── favicon.svg           #   站点图标
@@ -121,7 +121,7 @@ MS-WEB/
 - **`@/*` 路径别名**：在 `tsconfig.json` 中配置，`@/` 指向仓库根目录。组件内推荐使用别名导入，例如：
 
   ```ts
-  import heroImage from "@/assets/images/hero.jpg";
+  import heroDark from "@/assets/images/herodark.jpg";
   import { PRODUCTS } from "@/data/site";
   ```
 

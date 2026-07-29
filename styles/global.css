@@ -1,6 +1,32 @@
 @import "tailwindcss";
 @import "aos/dist/aos.css";
 
+/* =========================================================
+ * 自托管字体 MiSans（子集化产物见 public/fonts/，由
+ * scripts/subset-fonts.mjs 生成，运行 `pnpm subset:fonts` 刷新）
+ * ========================================================= */
+@font-face {
+  font-family: "MiSans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/misans-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "MiSans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/misans-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "MiSans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/misans-700.woff2") format("woff2");
+}
+
 @keyframes bannerSlideIn {
   0% {
     transform: translateX(20%) translateY(20%);
@@ -31,28 +57,239 @@
   opacity: 0; /* 初始完全透明，避免首帧闪现 */
 }
 
+/* =========================================================
+ * 主题色 token：深/浅两套值，随系统偏好或手动选择翻转
+ * - 默认（含 no-preference）：深色
+ * - 系统为浅色且未手动指定：浅色
+ * - 手动 data-theme="light" / "dark"：强制对应主题
+ * ========================================================= */
+
+/* 深色（默认 / 兜底） */
 :root {
-  --color-background: #11121c;
-  --color-foreground: #ffffff;
+  color-scheme: dark;
+
+  --bg: #11121c;
+  --fg: #ffffff;
+  --card: rgba(255, 255, 255, 0.05);
+  --card-hover: rgba(255, 255, 255, 0.1);
+  --card-wash: transparent;
+  --translucent: rgba(255, 255, 255, 0.1);
+  --translucent-hover: rgba(255, 255, 255, 0.2);
+  --elevated: rgba(17, 24, 39, 0.85);
+  --border: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.2);
+  --muted: #d1d5db;
+  --subtle: #9ca3af;
+  --accent: #60a5fa;
+  --accent-hover: #93c5fd;
+
+  /* Hero / 产品页径向背景 */
+  --hero-radial: radial-gradient(
+    ellipse at left bottom,
+    #2b3a67 0%,
+    #1c2340 50%,
+    #3d2e5c 100%
+  );
+  --product-radial: radial-gradient(
+    ellipse at right top,
+    #2b3a67 0%,
+    #11121c 55%,
+    #3d2e5c 100%
+  );
+  --product-cta-radial: radial-gradient(
+    ellipse at center,
+    #2b3a67 0%,
+    #11121c 80%
+  );
+  /* gradient-text 配色 */
+  --grad-1: #4f7cff;
+  --grad-2: #8b5cf6;
+  --grad-3: #26d0ce;
 
   --ease-bounce: cubic-bezier(0.84, 0, 0.165, 1);
   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
-
   --container-8xl: 96rem;
 }
 
+/* 浅色变量集合（供系统偏好与手动强制复用） */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    color-scheme: light;
+
+    --bg: #f7f8fb;
+    --fg: #15161f;
+    --card: #ffffff;
+    --card-hover: #eef0f5;
+    --card-wash: rgba(255, 255, 255, 0.3);
+    --translucent: rgba(0, 0, 0, 0.06);
+    --translucent-hover: rgba(0, 0, 0, 0.1);
+    --elevated: rgba(255, 255, 255, 0.85);
+    --border: rgba(0, 0, 0, 0.1);
+    --border-strong: rgba(0, 0, 0, 0.15);
+    --muted: #4b5563;
+    --subtle: #6b7280;
+    --accent: #2563eb;
+    --accent-hover: #1d4ed8;
+
+    --hero-radial: radial-gradient(
+      ellipse at left bottom,
+      #dbe4ff 0%,
+      #eef1fb 50%,
+      #efe6fb 100%
+    );
+    --product-radial: radial-gradient(
+      ellipse at right top,
+      #dbe4ff 0%,
+      #f7f8fb 55%,
+      #efe6fb 100%
+    );
+    --product-cta-radial: radial-gradient(
+      ellipse at center,
+      #dbe4ff 0%,
+      #f7f8fb 80%
+    );
+    --grad-1: #3b5bdb;
+    --grad-2: #7c3aed;
+    --grad-3: #0891b2;
+  }
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --bg: #f7f8fb;
+  --fg: #15161f;
+  --card: #ffffff;
+  --card-hover: #eef0f5;
+  --card-wash: rgba(255, 255, 255, 0.3);
+  --translucent: rgba(0, 0, 0, 0.06);
+  --translucent-hover: rgba(0, 0, 0, 0.1);
+  --elevated: rgba(255, 255, 255, 0.85);
+  --border: rgba(0, 0, 0, 0.1);
+  --border-strong: rgba(0, 0, 0, 0.15);
+  --muted: #4b5563;
+  --subtle: #6b7280;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+
+  --hero-radial: radial-gradient(
+    ellipse at left bottom,
+    #dbe4ff 0%,
+    #eef1fb 50%,
+    #efe6fb 100%
+  );
+  --product-radial: radial-gradient(
+    ellipse at right top,
+    #dbe4ff 0%,
+    #f7f8fb 55%,
+    #efe6fb 100%
+  );
+  --product-cta-radial: radial-gradient(
+    ellipse at center,
+    #dbe4ff 0%,
+    #f7f8fb 80%
+  );
+  --grad-1: #3b5bdb;
+  --grad-2: #7c3aed;
+  --grad-3: #0891b2;
+}
+
+/* 手动强制深色（覆盖系统浅色偏好） */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+/* 主题专属显隐（如 Hero 深/浅两张背景图与遮罩） */
+.light-only {
+  display: none;
+}
+.dark-only {
+  display: block;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) .light-only {
+    display: block;
+  }
+  :root:not([data-theme]) .dark-only {
+    display: none;
+  }
+}
+:root[data-theme="light"] .light-only {
+  display: block;
+}
+:root[data-theme="light"] .dark-only {
+  display: none;
+}
+
 @theme {
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
+  --color-card-wash: var(--card-wash);
+  --color-translucent: var(--translucent);
+  --color-translucent-hover: var(--translucent-hover);
+  --color-elevated: var(--elevated);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+
   --ease-bounce: cubic-bezier(0.84, 0, 0.165, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
   --container-8xl: 96rem;
+
+  /* 全局字体：MiSans 优先，系统栈兜底（加载前/失败不空字） */
+  --font-sans:
+    "MiSans", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+/* 隐藏滚动条（用于横向滑动卡片区） */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE / Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome / Safari */
+}
+
+/* 无障碍：尊重系统「减少动态效果」偏好，动画/过渡降级为近乎瞬时 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 body {
   background-color: var(--color-background);
   color: var(--color-foreground);
+  transition:
+    background-color 0.4s var(--ease-standard),
+    color 0.4s var(--ease-standard);
+}
+
+/* Hero / 产品页径向背景（随主题翻转，替代原内联渐变） */
+.hero-bg {
+  background: var(--hero-radial);
+}
+.product-bg {
+  background: var(--product-radial);
+}
+.product-cta-bg {
+  background: var(--product-cta-radial);
 }
 
 /* 动态渐变文本效果（借鉴 official_website） */
@@ -68,7 +305,13 @@ body {
   }
 }
 .gradient-text {
-  background: linear-gradient(45deg, #4f7cff, #8b5cf6, #26d0ce, #4f7cff);
+  background: linear-gradient(
+    45deg,
+    var(--grad-1),
+    var(--grad-2),
+    var(--grad-3),
+    var(--grad-1)
+  );
   background-size: 200% 200%;
   background-clip: text;
   -webkit-background-clip: text;

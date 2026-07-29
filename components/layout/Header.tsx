@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 
+import ThemeToggle from "@/components/ui/ThemeToggle";
 import { PRODUCTS } from "@/data/site";
 
 const navItems = [
   { href: "/", label: "首页" },
   { href: "/products/lunar-x", label: "产品", dropdown: true },
   { href: "/#services", label: "服务" },
+  { href: "/#team", label: "团队" },
+  { href: "/#links", label: "友情链接" },
   { href: "/#contact", label: "关于" },
 ];
 
@@ -57,7 +60,7 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 z-50 w-full ${overHero ? "" : "bg-gray-900/80 shadow-sm backdrop-blur-md"}`}
+      className={`fixed top-0 left-0 z-50 w-full ${overHero ? "" : "bg-elevated shadow-sm backdrop-blur-md"}`}
     >
       <nav className="container mx-auto flex items-center justify-between px-4 py-3">
         <a href="/">
@@ -71,21 +74,21 @@ const Header = () => {
               <div key={item.href} className="group relative">
                 <a
                   href={item.href}
-                  className={`relative text-gray-200 transition-colors hover:text-blue-400 ${
+                  className={`relative text-muted transition-colors hover:text-accent ${
                     isActive(item.href)
-                      ? "after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-full after:bg-[#7dd3fc] after:transition-all after:content-['']"
+                      ? "after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-full after:bg-accent after:transition-all after:content-['']"
                       : ""
                   }`}
                 >
                   {item.label}
                 </a>
                 {item.dropdown && (
-                  <div className="invisible absolute left-1/2 z-50 mt-2 w-56 -translate-x-1/2 rounded-xl border border-white/10 bg-gray-900/95 p-2 opacity-0 shadow-xl backdrop-blur-md transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                  <div className="invisible absolute left-1/2 z-50 mt-2 w-56 -translate-x-1/2 rounded-xl border border-border bg-elevated p-2 opacity-0 shadow-xl backdrop-blur-md transition-all duration-200 group-hover:visible group-hover:opacity-100">
                     {productLinks.map((p) => (
                       <a
                         key={p.href}
                         href={p.href}
-                        className="block rounded-lg px-3 py-2 text-sm text-gray-200 transition-colors hover:bg-white/10 hover:text-white"
+                        className="block rounded-lg px-3 py-2 text-sm text-muted transition-colors hover:bg-translucent-hover hover:text-foreground"
                       >
                         {p.label}
                       </a>
@@ -97,15 +100,17 @@ const Header = () => {
           </div>
           <a
             href="/#contact"
-            className="ease-bounce rounded-full bg-white/10 px-4 py-1.5 text-sm text-white backdrop-blur-sm transition-all duration-500 hover:scale-105 hover:bg-white/20"
+            className="ease-bounce rounded-full bg-translucent px-4 py-1.5 text-sm text-foreground backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-translucent-hover"
           >
             联系我们
           </a>
+          <ThemeToggle />
         </div>
-        <div className="md:hidden">
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-gray-200 focus:outline-none"
+            className="text-muted focus:outline-none"
             aria-label="切换菜单"
           >
             <svg
@@ -137,7 +142,7 @@ const Header = () => {
       <div
         className={`overflow-hidden shadow-sm transition-all duration-300 ease-in-out md:hidden ${
           isOpen
-            ? "max-h-[calc(100vh-64px)] bg-gray-900/90 opacity-100 backdrop-blur-md"
+            ? "max-h-[calc(100vh-64px)] bg-elevated opacity-100 backdrop-blur-md"
             : "max-h-0 opacity-0"
         }`}
       >
@@ -148,28 +153,31 @@ const Header = () => {
               <a
                 key={item.href}
                 href={item.href}
-                className="block py-2 text-gray-200 transition-colors hover:text-blue-400"
+                className="block py-2 text-muted transition-colors hover:text-accent"
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}
               </a>
             ))}
-          <div className="mt-2 border-t border-gray-600 pt-2">
-            <p className="py-1 text-sm text-gray-400">产品</p>
+          <div className="mt-2 border-t border-border pt-2">
+            <p className="py-1 text-sm text-subtle">产品</p>
             {productLinks.map((p) => (
               <a
                 key={p.href}
                 href={p.href}
-                className="block py-2 pl-3 text-gray-200 transition-colors hover:text-blue-400"
+                className="block py-2 pl-3 text-muted transition-colors hover:text-accent"
                 onClick={() => setIsOpen(false)}
               >
                 {p.label}
               </a>
             ))}
           </div>
+          <div className="mt-2 border-t border-border pt-2">
+            <ThemeToggle variant="row" />
+          </div>
           <a
             href="/#contact"
-            className="mt-2 block rounded-full bg-white/10 px-4 py-2 text-center text-sm text-white backdrop-blur-sm transition-colors hover:bg-white/20"
+            className="mt-2 block rounded-full bg-translucent px-4 py-2 text-center text-sm text-foreground backdrop-blur-sm transition-colors hover:bg-translucent-hover"
             onClick={() => setIsOpen(false)}
           >
             联系我们

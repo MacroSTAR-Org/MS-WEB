@@ -21,6 +21,8 @@ export interface Product {
   tagline: string;
   /** 一句话产品介绍（可为空） */
   desc: string;
+  /** 卡片背景图（可选）：填写后横向卡片会用图片替换默认渐变背景 */
+  image?: string;
   overviewSub: string;
   paragraphs: string[];
   advantage: string;
@@ -87,6 +89,84 @@ export const CARDS: { heading: string; sub: string; items: ServiceCard[] } = {
       ],
     },
   ],
+};
+
+/* ========== 成员墙（hover 揭示照片墙） ========== */
+export interface Member {
+  /** 姓名 / 昵称 */
+  name: string;
+  /** 角色 / 职位（可选，留空则只显示姓名） */
+  role?: string;
+  /** 头像路径，放在 public/team/ 下，引用形如 "/team/xxx.jpg"；留空则用首字母占位 */
+  avatar?: string;
+  /** 技能点 / 标签（可选，hover 时展开显示） */
+  tags?: string[];
+  /** 一句话 / 多行简介（可选，hover 时展开显示） */
+  bio?: string;
+}
+
+/**
+ * TEAM 成员墙数据
+ * ------------------------------------------------------------
+ * 填写说明：role / tags / bio 均为可选，按需补充即可。
+ * 例：{ name: "夏辉", role: "前端负责人", tags: ["React", "设计"],
+ *        bio: "热爱把想法变成产品。", avatar: "/team/11夏辉.jpg" }
+ */
+export const TEAM: { heading: string; sub: string; members: Member[] } = {
+  heading: "团队成员 - Team Member",
+  sub: "漫天星光，终将汇聚宏维星河——认识 MacroSTAR 背后的每一位伙伴。",
+  members: [
+    { name: "夏子涵", role:"CEO", tags: ["全栈"], bio: "hello world", avatar: "/team/11夏辉.jpg" },
+    { name: "离坎",role:"CTO", avatar: "/team/33离坎.jpg" },
+    { name: "RBC", role:"软件工程 高级副总裁", avatar: "/team/12RBC.jpg" },
+    { name: "山止川行", role:"财务总经理兼人事总经理", avatar: "/team/66山川.jpg" },
+    { name: "FUUSA", avatar: "/team/10FUUSA.jpg" },
+    { name: "SR", avatar: "/team/11SR.jpg" },
+    { name: "jerry", avatar: "/team/13jerry.jpg" },
+    { name: "🦷", avatar: "/team/14🦷.jpg" },
+    { name: "ljc", avatar: "/team/15ljc.jpg" },
+    { name: "rinlit", avatar: "/team/16rinlit.jpg" },
+    { name: "starfire", avatar: "/team/17starfire.png" },
+    { name: "tc", avatar: "/team/18tc.jpg" },
+    { name: "wym", avatar: "/team/19wym.jpg" },
+    { name: "kjy", avatar: "/team/20kjy.jpg" },
+    { name: "sheep", avatar: "/team/21sheep.jpg" },
+    { name: "nia", avatar: "/team/22nia.jpg" },
+    { name: "kyx", avatar: "/team/23kyx.jpg" },
+    { name: "林浅月", avatar: "/team/44林浅月.jpg" },
+    { name: "yany", avatar: "/team/55yany.jpg" },
+    { name: "山川", avatar: "/team/66山川.jpg" },
+    { name: "wyf9", avatar: "/team/77wyf9.jpg" },
+    { name: "maozi", avatar: "/team/88maozi.jpg" },
+    { name: "PPT", avatar: "/team/99PPT.jpg" },
+  ],
+};
+
+/* ========== 友情链接（Logo 网格） ========== */
+export interface FriendlyLink {
+  /** 站点名称 */
+  name: string;
+  /** 链接地址 */
+  url: string;
+  /** 一句话描述（可选） */
+  desc?: string;
+}
+
+export const FRIENDLY_LINKS: { heading: string; sub: string; items: FriendlyLink[] } = {
+  heading: "友情链接",
+  sub: "值得信赖的伙伴与资源。",
+  items: [
+    { name: "合作伙伴 A", url: "https://example.com", desc: "待补充描述" },
+    { name: "合作伙伴 B", url: "https://example.org", desc: "待补充描述" },
+    { name: "合作伙伴 C", url: "https://example.net", desc: "待补充描述" },
+    { name: "合作伙伴 D", url: "https://example.edu", desc: "待补充描述" },
+  ],
+};
+
+/* ========== 首页产品导航（横向滑动卡片）文案 ========== */
+export const PRODUCTS_NAV = {
+  heading: "探索我们的产品",
+  sub: "点击卡片，深入了解每一款产品。",
 };
 
 export const FOOTER = {
