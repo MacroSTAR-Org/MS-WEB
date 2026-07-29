@@ -73,7 +73,7 @@ const Hero = () => {
         href="#services"
         className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-sm text-muted transition-colors hover:text-foreground"
       >
-        向下滚动 �?
+        🔽 向下滚动 🔽
       </a>
     </div>
   );
