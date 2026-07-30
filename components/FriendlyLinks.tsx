@@ -1,14 +1,5 @@
 import { FRIENDLY_LINKS } from "@/data/site";
 
-const GRADIENTS = [
-  "from-violet-600 to-indigo-700",
-  "from-rose-600 to-pink-700",
-  "from-cyan-600 to-blue-700",
-  "from-amber-600 to-orange-700",
-  "from-emerald-600 to-teal-700",
-  "from-fuchsia-600 to-purple-700",
-];
-
 const firstChar = (s: string) => Array.from(s)[0] ?? "?";
 
 const FriendlyLinks = () => (
@@ -20,28 +11,37 @@ const FriendlyLinks = () => (
       <p className="text-lg text-subtle">{FRIENDLY_LINKS.sub}</p>
     </div>
 
-    <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
       {FRIENDLY_LINKS.items.map((link, idx) => (
         <a
           key={link.name}
           href={link.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="ease-bounce group flex flex-col overflow-hidden rounded-2xl border border-border bg-card outline-none transition-all duration-300 hover:scale-[1.02] hover:bg-card-hover focus-visible:ring-2 focus-visible:ring-accent"
+          className="ease-bounce group flex items-center gap-4 rounded-2xl border border-border bg-card/80 p-4 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-card-hover focus-visible:ring-2 focus-visible:ring-accent"
           data-aos="fade-up"
           data-aos-delay={Math.min(idx * 80, 400)}
         >
-          {/* Logo 区：渐变首字母 */}
-          <div
-            className={`flex aspect-square items-center justify-center bg-gradient-to-br ${GRADIENTS[idx % GRADIENTS.length]} text-4xl font-semibold text-white transition-transform duration-300 group-hover:scale-105`}
-          >
-            {firstChar(link.name)}
+          {/* Logo区域 */}
+          <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-card transition-transform duration-300 group-hover:scale-105">
+            {link.logo ? (
+              <img
+                src={link.logo}
+                alt={link.name}
+                loading="lazy"
+                className="h-full w-full object-contain p-2"
+              />
+            ) : (
+              <span className="text-2xl font-semibold text-muted">
+                {firstChar(link.name)}
+              </span>
+            )}
           </div>
 
-          {/* 文字区 */}
-          <div className="flex flex-1 flex-col justify-center gap-1 px-5 py-4">
+          {/* 文字区域 */}
+          <div className="flex min-w-0 flex-1 flex-col gap-1">
             <div className="flex items-center gap-1.5">
-              <span className="text-sm font-semibold">{link.name}</span>
+              <span className="truncate text-sm font-semibold">{link.name}</span>
               <svg
                 className="h-3.5 w-3.5 shrink-0 text-muted transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 viewBox="0 0 24 24"
@@ -56,7 +56,9 @@ const FriendlyLinks = () => (
               </svg>
             </div>
             {link.desc && (
-              <p className="text-xs leading-relaxed text-subtle">{link.desc}</p>
+              <p className="line-clamp-2 text-xs leading-relaxed text-subtle">
+                {link.desc}
+              </p>
             )}
           </div>
         </a>

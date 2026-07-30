@@ -20,7 +20,6 @@ export interface Product {
   subtitle: string;
   tagline: string;
   /** 一句话产品介绍（可为空） */
-  desc: string;
   /** 卡片背景图（可选）：填写后横向卡片会用图片替换默认渐变背景 */
   image?: string;
   overviewSub: string;
@@ -97,7 +96,7 @@ export interface Member {
   name: string;
   /** 角色 / 职位（可选，留空则只显示姓名） */
   role?: string;
-  /** 头像路径，放在 public/team/ 下，引用形如 "/team/xxx.jpg"；留空则用首字母占位 */
+  /** 头像URL，留空则用首字母占位 */
   avatar?: string;
   /** 技能点 / 标签（可选，hover 时展开显示） */
   tags?: string[];
@@ -110,35 +109,34 @@ export interface Member {
  * ------------------------------------------------------------
  * 填写说明：role / tags / bio 均为可选，按需补充即可。
  * 例：{ name: "夏辉", role: "前端负责人", tags: ["React", "设计"],
- *        bio: "热爱把想法变成产品。", avatar: "/team/11夏辉.jpg" }
+ *        bio: "热爱把想法变成产品。", avatar: "https://example.com/avatar/xiahui.jpg" }
  */
 export const TEAM: { heading: string; sub: string; members: Member[] } = {
   heading: "团队成员 - Team Member",
   sub: "漫天星光，终将汇聚宏维星河——认识 MacroSTAR 背后的每一位伙伴。",
   members: [
-    { name: "夏子涵", role:"CEO", tags: ["全栈"], bio: "hello world", avatar: "/team/11夏辉.jpg" },
-    { name: "离坎",role:"CTO", avatar: "/team/33离坎.jpg" },
-    { name: "RBC", role:"软件工程 高级副总裁", avatar: "/team/12RBC.jpg" },
-    { name: "山止川行", role:"财务总经理兼人事总经理", avatar: "/team/66山川.jpg" },
-    { name: "FUUSA", avatar: "/team/10FUUSA.jpg" },
-    { name: "SR", avatar: "/team/11SR.jpg" },
-    { name: "jerry", avatar: "/team/13jerry.jpg" },
-    { name: "🦷", avatar: "/team/14🦷.jpg" },
-    { name: "ljc", avatar: "/team/15ljc.jpg" },
-    { name: "rinlit", avatar: "/team/16rinlit.jpg" },
-    { name: "starfire", avatar: "/team/17starfire.png" },
-    { name: "tc", avatar: "/team/18tc.jpg" },
-    { name: "wym", avatar: "/team/19wym.jpg" },
-    { name: "kjy", avatar: "/team/20kjy.jpg" },
-    { name: "sheep", avatar: "/team/21sheep.jpg" },
-    { name: "nia", avatar: "/team/22nia.jpg" },
-    { name: "kyx", avatar: "/team/23kyx.jpg" },
-    { name: "林浅月", avatar: "/team/44林浅月.jpg" },
-    { name: "yany", avatar: "/team/55yany.jpg" },
-    { name: "山川", avatar: "/team/66山川.jpg" },
-    { name: "wyf9", avatar: "/team/77wyf9.jpg" },
-    { name: "maozi", avatar: "/team/88maozi.jpg" },
-    { name: "PPT", avatar: "/team/99PPT.jpg" },
+    { name: "夏子涵", role:"首席执行官&创始人", tags: ["全栈"], bio: "Hello World.", avatar: "https://q1.qlogo.cn/g?b=qq&nk=2473768771%7D&s=640" },
+    { name: "离坎",role:"董事长", tags:  ["监工"], avatar: "https://q1.qlogo.cn/g?b=qq&nk=2726001724%7D&s=640" },
+    { name: "后藤一里", role:"软件工程 高级副总裁", avatar: "https://q1.qlogo.cn/g?b=qq&nk=1348472639%7D&s=640" },
+    { name: "Maozi", role:"副总裁", avatar: "https://q1.qlogo.cn/g?b=qq&nk=2180312206%7D&s=640" },
+    { name: "山止川行", role:"财务总监兼人力资源总监", tags: ["银行"], avatar: "https://q1.qlogo.cn/g?b=qq&nk=2792216821%7D&s=640" },
+    { name: "木易yany", role:"法务总监", avatar: "https://q1.qlogo.cn/g?b=qq&nk=1493383980%7D&s=640" },
+    { name: "SR思锐 开发者", role:"合作伙伴&技术支持", avatar: "https://q1.qlogo.cn/g?b=qq&nk=169368309%7D&s=640" },
+    { name: "wyf9", role:"合作伙伴&技术支持", avatar: "https://q1.qlogo.cn/g?b=qq&nk=2191161566%7D&s=640" },
+    { name: "FUUSA", role:"软件工程师", tags: ["C++"], avatar: "https://q1.qlogo.cn/g?b=qq&nk=137960472%7D&s=640" },
+    { name: "J2rQ(y)", role:"软件工程师", tags: ["Python"], avatar: "https://q1.qlogo.cn/g?b=qq&nk=2414528438%7D&s=640" },
+    { name: "ljc", role:"社区管理",tags: ["离线"], avatar: "https://q1.qlogo.cn/g?b=qq&nk=3558516573%7D&s=640" },
+    { name: "RinLit", role:"美术设计", avatar: "https://q1.qlogo.cn/g?b=qq&nk=3295014118%7D&s=640" },
+    { name: "Starfire", role:"LunarValleyX 产品总监", avatar: "https://q1.qlogo.cn/g?b=qq&nk=3428848818%7D&s=640" },
+    { name: "Tom Chicken", role:"技术支持", avatar: "https://q1.qlogo.cn/g?b=qq&nk=2674407845%7D&s=640" },
+    { name: "吻一秒", role:"宏吾星耀-执行董事&创始人&艺人", avatar: "https://q1.qlogo.cn/g?b=qq&nk=2383443986%7D&s=640" },
+    { name: "左右更偏左", role:"宏吾星耀-艺人", avatar: "https://q1.qlogo.cn/g?b=qq&nk=3388363828%7D&s=640" },
+    { name: "屿川", role:"宏吾星耀-艺术总监&艺人", avatar: "https://q1.qlogo.cn/g?b=qq&nk=1903652434%7D&s=640" },
+    { name: "困困鱼", role:"宏吾星耀-运营总监", avatar: "https://q1.qlogo.cn/g?b=qq&nk=3211998128%7D&s=640" },
+    { name: "羊村里的小羊", role:"宏吾星耀-作曲家", avatar: "https://q1.qlogo.cn/g?b=qq&nk=2765941099%7D&s=640" },
+    { name: "NIANIA", role:"宏吾星耀-艺人", avatar: "https://q1.qlogo.cn/g?b=qq&nk=3407739763%7D&s=640" },
+    { name: "可用性", role:"宏吾星耀-剪辑师", avatar: "https://q1.qlogo.cn/g?b=qq&nk=3816006721%7D&s=640" },
+    { name: "林浅月", role:"吉祥物", avatar: "https://q1.qlogo.cn/g?b=qq&nk=2221840752%7D&s=640" },
   ],
 };
 
@@ -150,16 +148,20 @@ export interface FriendlyLink {
   url: string;
   /** 一句话描述（可选） */
   desc?: string;
+  /** Logo图片路径（可选），如 "/logos/sr-studio.png" */
+  logo?: string;
 }
 
 export const FRIENDLY_LINKS: { heading: string; sub: string; items: FriendlyLink[] } = {
   heading: "友情链接",
   sub: "值得信赖的伙伴与资源。",
   items: [
-    { name: "合作伙伴 A", url: "https://example.com", desc: "待补充描述" },
-    { name: "合作伙伴 B", url: "https://example.org", desc: "待补充描述" },
-    { name: "合作伙伴 C", url: "https://example.net", desc: "待补充描述" },
-    { name: "合作伙伴 D", url: "https://example.edu", desc: "待补充描述" },
+    { name: "SR思锐 团队", url: "https://sr-studio.cn/", desc: "一个以创新创造为导向的青少年编程学习与实践社区，和伙伴们一起用代码创造未来。", logo: "/logos/sr-studio.png" },
+    { name: "DCR 学生互助频道", url: "https://www.dcr2026.com/", desc: "一个温暖、免费、专业、易用的学生互助社区", logo: "/logos/dcr.png" },
+    { name: "Class Widgets", url: "https://classwidgets.rinlit.cn/", desc: "多样的桌面课表", logo: "/logos/classwidgets.png" },
+    { name: "SiiWay Team", url: "https://siiway.org/", desc: "Building Open Source Software in the AI Era.", logo: "/logos/siiway.png" },
+    { name: "ColudAI", url: "https://coludai.cn/", desc: "创新，开启新世界；下一代人工智能解决方案", logo: "/logos/coludai.png" },
+    { name: "Project Hazelita", url: "https://qm.qq.com/q/RoDLH2u7SY", desc: "一个友爱、开放、友好、多样的技术交流社群", logo: "/logos/hazelita.png" },
   ],
 };
 
@@ -244,7 +246,6 @@ export const PRODUCTS: Product[] = [
     title: "Lunar X",
     subtitle: "新势力，轻装上阵",
     tagline: "AI 平台",
-    desc: "待补充：一句话产品介绍，突出核心价值。",
     overviewSub: "待补充：简要描述 Lunar X 的定位与核心价值。",
     paragraphs: ["待补充：产品详细介绍第一段。", "待补充：产品详细介绍第二段。"],
     advantage: "待补充：描述产品的关键优势。",
@@ -269,7 +270,6 @@ export const PRODUCTS: Product[] = [
     title: "林笙 · Linden",
     subtitle: "陪你，帮你，让你，做你",
     tagline: "Web 开发平台",
-    desc: "待补充：一句话产品介绍，突出核心价值。",
     overviewSub: "待补充：简要描述林笙 Linden 的定位与核心价值。",
     paragraphs: ["待补充：产品详细介绍第一段。", "待补充：产品详细介绍第二段。"],
     advantage: "待补充：描述产品的关键优势。",
@@ -294,7 +294,6 @@ export const PRODUCTS: Product[] = [
     title: "山止组件 MacroWidgets",
     subtitle: "方寸之间",
     tagline: "移动组件库",
-    desc: "待补充：一句话产品介绍，突出核心价值。",
     overviewSub: "待补充：简要描述山止组件的定位与核心价值。",
     paragraphs: ["待补充：产品详细介绍第一段。", "待补充：产品详细介绍第二段。"],
     advantage: "待补充：描述产品的关键优势。",
@@ -319,7 +318,6 @@ export const PRODUCTS: Product[] = [
     title: "Lunar Bot 3",
     subtitle: "大相径庭",
     tagline: "智能机器人",
-    desc: "待补充：一句话产品介绍，突出核心价值。",
     overviewSub: "待补充：简要描述 Lunar Bot 3 的定位与核心价值。",
     paragraphs: ["待补充：产品详细介绍第一段。", "待补充：产品详细介绍第二段。"],
     advantage: "待补充：描述产品的关键优势。",
@@ -344,7 +342,6 @@ export const PRODUCTS: Product[] = [
     title: "LunarValleyX",
     subtitle: "More Beautiful",
     tagline: "云端服务",
-    desc: "",
     overviewSub: "待补充：简要描述 LunarValleyX 的定位与核心价值。",
     paragraphs: ["待补充：产品详细介绍第一段。", "待补充：产品详细介绍第二段。"],
     advantage: "待补充：描述产品的关键优势。",
