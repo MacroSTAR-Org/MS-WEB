@@ -1,0 +1,26 @@
+---
+import { PRODUCT_COMMON as C } from "../../data/site";
+import type { ProductOverviewData } from "../../data/site";
+
+interface Props {
+  data: ProductOverviewData;
+}
+
+const { data } = Astro.props;
+---
+
+<section id="overview" class="scroll-mt-24">
+  <div class="mb-8 flex flex-col gap-4" data-aos="fade-up">
+    <h2 class="text-3xl font-semibold lg:text-4xl">{C.overviewTitle}</h2>
+    <p class="text-subtle text-lg">{data.sub}</p>
+  </div>
+  <div
+    class="text-muted flex flex-col gap-4"
+    data-aos="fade-up"
+    data-aos-delay="100"
+  >
+    {data.paragraphs.map((p) => <p class="leading-relaxed">{p}</p>)}
+    <h3 class="text-foreground mt-4 text-xl font-semibold">{C.advTitle}</h3>
+    <p class="leading-relaxed">{data.advantage}</p>
+  </div>
+</section>

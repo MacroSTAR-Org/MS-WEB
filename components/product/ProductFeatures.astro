@@ -1,0 +1,36 @@
+---
+import { PRODUCT_COMMON as C } from "../../data/site";
+import type { ProductFeaturesData } from "../../data/site";
+
+interface Props {
+  data: ProductFeaturesData;
+}
+
+const { data } = Astro.props;
+const gridCols =
+  data.items.length > 3
+    ? "grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-4"
+    : "grid grid-cols-1 gap-8 md:grid-cols-3";
+---
+
+<section id="features" class="scroll-mt-24">
+  <div class="mb-12 flex flex-col gap-4" data-aos="fade-up">
+    <h2 class="text-3xl font-semibold lg:text-4xl">{C.featuresTitle}</h2>
+    <p class="text-subtle text-lg">{data.sub}</p>
+  </div>
+  <div class={gridCols}>
+    {
+      data.items.map((f, idx) => (
+        <div
+          class="ease-bounce border-border bg-card hover:bg-card-hover flex flex-col gap-3 rounded-2xl border p-8 transition-all duration-300 hover:scale-[1.02]"
+          data-aos="fade-up"
+          data-aos-delay={idx * 100}
+        >
+          <span class="text-3xl">{f.icon}</span>
+          <h4 class="text-xl font-semibold">{f.title}</h4>
+          <p class="text-subtle">{f.desc}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>

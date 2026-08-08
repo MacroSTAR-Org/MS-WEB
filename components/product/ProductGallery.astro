@@ -1,0 +1,46 @@
+---
+import { PRODUCT_COMMON as C } from "../../data/site";
+import type { ProductGalleryData } from "../../data/site";
+
+interface Props {
+  data: ProductGalleryData;
+}
+
+const { data } = Astro.props;
+---
+
+<section id="gallery" class="scroll-mt-24">
+  <div class="mb-12 flex flex-col gap-4" data-aos="fade-up">
+    <h2 class="text-3xl font-semibold lg:text-4xl">{C.galleryTitle}</h2>
+    <p class="text-subtle text-lg">{data.sub}</p>
+  </div>
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+    {
+      data.items.map((item, idx) => (
+        <figure
+          class="ease-bounce group border-border overflow-hidden rounded-2xl border transition-all duration-300 hover:scale-[1.02]"
+          data-aos="fade-up"
+          data-aos-delay={idx * 100}
+        >
+          {item.image ? (
+            <img
+              src={item.image}
+              alt={item.title}
+              class="aspect-[16/10] h-full w-full object-cover"
+            />
+          ) : (
+            <div class="product-grad-bg flex aspect-[16/10] items-center justify-center">
+              <span class="text-5xl opacity-70 drop-shadow-lg">
+                {item.icon}
+              </span>
+            </div>
+          )}
+          <figcaption class="bg-card flex flex-col gap-1 px-6 py-4">
+            <span class="font-semibold">{item.title}</span>
+            {item.desc && <span class="text-subtle text-sm">{item.desc}</span>}
+          </figcaption>
+        </figure>
+      ))
+    }
+  </div>
+</section>

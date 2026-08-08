@@ -1,9 +1,10 @@
 ---
 import FriendlyLinks from "../components/FriendlyLinks";
 import Hero from "../components/Hero";
+import HonorWall from "../components/HonorWall";
 import MemberWall from "../components/MemberWall";
 import ProductCarousel from "../components/ProductCarousel";
-import ServiceCards from "../components/ServiceCards";
+import ContactSection from "../components/ContactSection";
 import Layout from "../layouts/Layout.astro";
 ---
 
@@ -14,8 +15,9 @@ import Layout from "../layouts/Layout.astro";
       class="ease-bounce flex flex-col gap-24 px-8 transition-all duration-500 md:px-12 lg:px-16 xl:px-24"
     >
       <ProductCarousel client:visible />
-      <ServiceCards />
+      <ContactSection />
       <MemberWall />
+      <HonorWall />
       <FriendlyLinks />
     </div>
   </div>

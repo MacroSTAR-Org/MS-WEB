@@ -13,18 +13,18 @@ const Hero = () => {
       {/* 背景图：外层负责独立淡入，内层保留原滑入动画；深/浅各一张 */}
       <div className="hero-fade-in absolute inset-0">
         <div
-          className="banner-slide-in absolute inset-0 bg-cover bg-center bg-no-repeat dark-only"
+          className="banner-slide-in dark-only absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${heroDark.src})` }}
         />
         <div
-          className="banner-slide-in absolute inset-0 bg-cover bg-center bg-no-repeat light-only"
+          className="banner-slide-in light-only absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${heroLight.src})` }}
         />
       </div>
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent dark-only" />
-      <div className="absolute inset-0 bg-gradient-to-r from-white/70 to-transparent light-only" />
+      <div className="dark-only absolute inset-0 bg-gradient-to-r from-black/70 to-transparent" />
+      <div className="light-only absolute inset-0 bg-gradient-to-r from-white/70 to-transparent" />
       {/* 内容容器（相对定位，不受背景动画影响） */}
-      <div className="relative h-full text-foreground">
+      <div className="text-foreground relative h-full">
         <div className="ease-bounce max-w-8xl relative z-10 mx-auto flex h-full flex-col items-start justify-center gap-4 px-8 transition-all duration-300 md:gap-8 md:px-12 lg:px-16 xl:px-24">
           <div className="ease-bounce flex flex-col gap-4 transition-all duration-300 md:gap-6">
             <h1
@@ -41,7 +41,7 @@ const Hero = () => {
               {HERO.subtitle}
             </h2>
             <p
-              className="max-w-xl text-lg text-muted lg:text-xl"
+              className="text-muted max-w-xl text-lg lg:text-xl"
               data-aos="fade-right"
               data-aos-delay="200"
             >
@@ -70,8 +70,8 @@ const Hero = () => {
       </div>
       {/* 向下滚动提示 */}
       <a
-        href="#services"
-        className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-sm text-muted transition-colors hover:text-foreground"
+        href="#products"
+        className="text-muted hover:text-foreground absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-sm transition-colors"
       >
         🔽 向下滚动 🔽
       </a>

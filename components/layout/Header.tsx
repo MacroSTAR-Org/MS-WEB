@@ -1,15 +1,13 @@
-import { useEffect, useState } from "react";
-
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import { PRODUCTS } from "@/data/site";
+import { useEffect, useState } from "react";
 
 const navItems = [
   { href: "/", label: "首页" },
   { href: "/products/lunar-x", label: "产品", dropdown: true },
-  { href: "/#services", label: "服务" },
+  { href: "/#contact", label: "关于我们" },
   { href: "/#team", label: "团队" },
   { href: "/#links", label: "友情链接" },
-  { href: "/#contact", label: "关于" },
 ];
 
 const productLinks = PRODUCTS.map((p) => ({
@@ -74,21 +72,21 @@ const Header = () => {
               <div key={item.href} className="group relative">
                 <a
                   href={item.href}
-                  className={`relative text-muted transition-colors hover:text-accent ${
+                  className={`text-muted hover:text-accent relative transition-colors ${
                     isActive(item.href)
-                      ? "after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-full after:bg-accent after:transition-all after:content-['']"
+                      ? "after:bg-accent after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-full after:transition-all after:content-['']"
                       : ""
                   }`}
                 >
                   {item.label}
                 </a>
                 {item.dropdown && (
-                  <div className="invisible absolute left-1/2 z-50 mt-2 w-56 -translate-x-1/2 rounded-xl border border-border bg-elevated p-2 opacity-0 shadow-xl backdrop-blur-md transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                  <div className="border-border bg-elevated invisible absolute left-1/2 z-50 mt-2 w-56 -translate-x-1/2 rounded-xl border p-2 opacity-0 shadow-xl backdrop-blur-md transition-all duration-200 group-hover:visible group-hover:opacity-100">
                     {productLinks.map((p) => (
                       <a
                         key={p.href}
                         href={p.href}
-                        className="block rounded-lg px-3 py-2 text-sm text-muted transition-colors hover:bg-translucent-hover hover:text-foreground"
+                        className="text-muted hover:bg-translucent-hover hover:text-foreground block rounded-lg px-3 py-2 text-sm transition-colors"
                       >
                         {p.label}
                       </a>
@@ -100,7 +98,7 @@ const Header = () => {
           </div>
           <a
             href="/#contact"
-            className="ease-bounce rounded-full bg-translucent px-4 py-1.5 text-sm text-foreground backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-translucent-hover"
+            className="ease-bounce bg-translucent text-foreground hover:bg-translucent-hover rounded-full px-4 py-1.5 text-sm backdrop-blur-sm transition-all duration-300 hover:scale-105"
           >
             联系我们
           </a>
@@ -142,7 +140,7 @@ const Header = () => {
       <div
         className={`overflow-hidden shadow-sm transition-all duration-300 ease-in-out md:hidden ${
           isOpen
-            ? "max-h-[calc(100vh-64px)] bg-elevated opacity-100 backdrop-blur-md"
+            ? "bg-elevated max-h-[calc(100vh-64px)] opacity-100 backdrop-blur-md"
             : "max-h-0 opacity-0"
         }`}
       >
@@ -153,31 +151,31 @@ const Header = () => {
               <a
                 key={item.href}
                 href={item.href}
-                className="block py-2 text-muted transition-colors hover:text-accent"
+                className="text-muted hover:text-accent block py-2 transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}
               </a>
             ))}
-          <div className="mt-2 border-t border-border pt-2">
-            <p className="py-1 text-sm text-subtle">产品</p>
+          <div className="border-border mt-2 border-t pt-2">
+            <p className="text-subtle py-1 text-sm">产品</p>
             {productLinks.map((p) => (
               <a
                 key={p.href}
                 href={p.href}
-                className="block py-2 pl-3 text-muted transition-colors hover:text-accent"
+                className="text-muted hover:text-accent block py-2 pl-3 transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 {p.label}
               </a>
             ))}
           </div>
-          <div className="mt-2 border-t border-border pt-2">
+          <div className="border-border mt-2 border-t pt-2">
             <ThemeToggle variant="row" />
           </div>
           <a
             href="/#contact"
-            className="mt-2 block rounded-full bg-translucent px-4 py-2 text-center text-sm text-foreground backdrop-blur-sm transition-colors hover:bg-translucent-hover"
+            className="bg-translucent text-foreground hover:bg-translucent-hover mt-2 block rounded-full px-4 py-2 text-center text-sm backdrop-blur-sm transition-colors"
             onClick={() => setIsOpen(false)}
           >
             联系我们

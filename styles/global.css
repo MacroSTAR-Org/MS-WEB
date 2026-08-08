@@ -6,25 +6,25 @@
  * scripts/subset-fonts.mjs 生成，运行 `pnpm subset:fonts` 刷新）
  * ========================================================= */
 @font-face {
-  font-family: "MiSans";
   font-style: normal;
   font-weight: 400;
-  font-display: swap;
   src: url("/fonts/misans-400.woff2") format("woff2");
+  font-family: "MiSans";
+  font-display: swap;
 }
 @font-face {
-  font-family: "MiSans";
   font-style: normal;
   font-weight: 600;
-  font-display: swap;
   src: url("/fonts/misans-600.woff2") format("woff2");
+  font-family: "MiSans";
+  font-display: swap;
 }
 @font-face {
-  font-family: "MiSans";
   font-style: normal;
   font-weight: 700;
-  font-display: swap;
   src: url("/fonts/misans-700.woff2") format("woff2");
+  font-family: "MiSans";
+  font-display: swap;
 }
 
 @keyframes bannerSlideIn {
@@ -39,8 +39,8 @@
 }
 
 .banner-slide-in {
-  animation: bannerSlideIn 0.5s ease-out forwards;
   opacity: 0.1; /* 初始状态确保半透明 */
+  animation: bannerSlideIn 0.5s ease-out forwards;
 }
 
 @keyframes heroFadeIn {
@@ -53,8 +53,8 @@
 }
 
 .hero-fade-in {
-  animation: heroFadeIn 1s ease-out forwards;
   opacity: 0; /* 初始完全透明，避免首帧闪现 */
+  animation: heroFadeIn 1s ease-out forwards;
 }
 
 /* =========================================================
@@ -274,11 +274,11 @@ html {
 }
 
 body {
-  background-color: var(--color-background);
-  color: var(--color-foreground);
   transition:
     background-color 0.4s var(--ease-standard),
     color 0.4s var(--ease-standard);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
 }
 
 /* Hero / 产品页径向背景（随主题翻转，替代原内联渐变） */
@@ -290,6 +290,11 @@ body {
 }
 .product-cta-bg {
   background: var(--product-cta-radial);
+}
+
+/* 产品图集渐变占位块（颜色随各产品主题变量自动翻转） */
+.product-grad-bg {
+  background: linear-gradient(135deg, var(--grad-1) 0%, var(--grad-2) 100%);
 }
 
 /* 动态渐变文本效果（借鉴 official_website） */

@@ -1,0 +1,35 @@
+---
+import { PRODUCTS, PRODUCT_COMMON as C } from "../../data/site";
+import type { Product } from "../../data/site";
+
+interface Props {
+  current: Product;
+}
+
+const { current } = Astro.props;
+const others = PRODUCTS.filter((p) => p.slug !== current.slug);
+---
+
+<section>
+  <h2 class="mb-8 text-3xl font-semibold lg:text-4xl" data-aos="fade-up">
+    {C.othersTitle}
+  </h2>
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+    {
+      others.map((p, idx) => (
+        <a
+          href={`/products/${p.slug}`}
+          class="ease-bounce group border-border bg-card hover:bg-card-hover flex flex-col gap-2 rounded-2xl border p-6 transition-all duration-300 hover:scale-[1.02]"
+          data-aos="fade-up"
+          data-aos-delay={idx * 50}
+        >
+          <span class="text-lg font-semibold">{p.title}</span>
+          <span class="text-subtle text-sm">{p.subtitle}</span>
+          <span class="text-accent group-hover:text-accent-hover mt-2 text-sm transition-colors">
+            {C.viewDetail}
+          </span>
+        </a>
+      ))
+    }
+  </div>
+</section>
