@@ -16,9 +16,18 @@ const { product } = Astro.props;
 >
   <div class="product-cta-bg absolute inset-0"></div>
   <div class="relative z-10 flex flex-col items-center gap-4">
-    <h2 class="text-3xl font-semibold lg:text-4xl">{C.ctaTitle}</h2>
+    <h2 class="text-3xl font-semibold lg:text-4xl">
+      {product.ctaTitle ?? C.ctaTitle}
+    </h2>
     <p class="text-muted text-lg">{product.ctaSub}</p>
     <div class="mt-4 flex flex-col gap-4 md:flex-row">
+      {
+        product.downloadHref && (
+          <Button href={product.downloadHref} className="flex w-fit items-center gap-2">
+            <span class="text-lg">立即下载</span>
+          </Button>
+        )
+      }
       <Button href={C.ctaJoinHref} className="flex w-fit items-center gap-2">
         <span class="text-lg">{C.ctaJoin}</span>
       </Button>

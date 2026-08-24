@@ -3,6 +3,8 @@ import Layout from "../../layouts/Layout.astro";
 import ProductHero from "../../components/product/ProductHero.astro";
 import ProductOverview from "../../components/product/ProductOverview.astro";
 import ProductGallery from "../../components/product/ProductGallery.astro";
+import ProductScenarios from "../../components/product/ProductScenarios.astro";
+import ProductEcosystem from "../../components/product/ProductEcosystem.astro";
 import ProductFeatures from "../../components/product/ProductFeatures.astro";
 import ProductCodeDemo from "../../components/product/ProductCodeDemo.astro";
 import ProductSpecs from "../../components/product/ProductSpecs.astro";
@@ -50,6 +52,14 @@ const scopeCss = themeCss(product.slug, product.theme);
             case "overview":
               return (
                 product.overview && <ProductOverview data={product.overview} />
+              );
+            case "scenarios":
+              return (
+                product.scenarios && <ProductScenarios data={product.scenarios} />
+              );
+            case "ecosystem":
+              return (
+                product.ecosystem && <ProductEcosystem data={product.ecosystem} />
               );
             case "gallery":
               return (

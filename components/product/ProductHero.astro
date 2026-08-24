@@ -25,12 +25,20 @@ const firstSection = product.sections[0] ?? "overview";
       <span class="mx-1">&rsaquo;</span>
       <span>{product.title}</span>
     </div>
-    <span
-      class="border-border-strong bg-translucent text-muted rounded-full border px-3 py-1 text-xs tracking-wide backdrop-blur-sm"
-      data-reveal="fade-right"
-    >
-      {product.tagline}
-    </span>
+    <div class="flex flex-wrap items-center gap-2" data-reveal="fade-right">
+      {
+        product.badge && (
+          <span class="border-accent/40 bg-accent/10 text-accent rounded-full border px-3 py-1 text-xs tracking-wide backdrop-blur-sm">
+            {product.badge}
+          </span>
+        )
+      }
+      <span
+        class="border-border-strong bg-translucent text-muted rounded-full border px-3 py-1 text-xs tracking-wide backdrop-blur-sm"
+      >
+        {product.tagline}
+      </span>
+    </div>
     <h1
       class="text-4xl leading-snug font-semibold lg:text-5xl xl:text-6xl"
       data-reveal="fade-right"
@@ -60,11 +68,21 @@ const firstSection = product.sections[0] ?? "overview";
       data-reveal="fade-up"
       data-reveal-delay="180"
     >
+      {
+        product.downloadHref && (
+          <Button
+            href={product.downloadHref}
+            className="flex w-fit items-center gap-2"
+          >
+            <span class="text-lg">立即下载</span>
+          </Button>
+        )
+      }
       <Button
         href={`#${firstSection}`}
         className="flex w-fit items-center gap-2"
       >
-        <span class="text-lg">{C.learnMore}</span>
+        <span class="text-lg">{product.downloadHref ? "了解场景" : C.learnMore}</span>
       </Button>
       <TransparentButton
         href="/#contact"

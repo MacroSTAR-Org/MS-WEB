@@ -1,0 +1,29 @@
+---
+import { Button } from "../ui/Button";
+import type { ProductEcosystem as Ecosystem } from "../../data/site";
+
+interface Props {
+  data: Ecosystem;
+}
+
+const { data } = Astro.props;
+---
+
+<section id="ecosystem" class="scroll-mt-24">
+  <div
+    class="border-border bg-card relative overflow-hidden rounded-2xl border p-10 lg:p-14"
+    data-reveal="zoom-in"
+  >
+    <div class="product-grad-bg absolute inset-0 opacity-20"></div>
+    <div class="relative z-10 flex flex-col items-start gap-5">
+      <span class="text-accent text-sm font-medium tracking-wide">
+        扩展你的桌面
+      </span>
+      <h2 class="text-3xl font-semibold lg:text-4xl">{data.title}</h2>
+      <p class="text-muted max-w-2xl text-lg">{data.desc}</p>
+      <Button href={data.ctaHref} className="flex w-fit items-center gap-2">
+        <span class="text-lg">{data.ctaText}</span>
+      </Button>
+    </div>
+  </div>
+</section>

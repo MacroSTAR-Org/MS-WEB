@@ -1,0 +1,44 @@
+---
+import type { ProductScenario } from "../../data/site";
+
+interface Props {
+  data: ProductScenario[];
+}
+
+const { data } = Astro.props;
+---
+
+{
+  data.map((scenario) => {
+    const gridClass =
+      scenario.items.length === 3
+        ? "sm:grid-cols-3"
+        : "sm:grid-cols-2 lg:grid-cols-4";
+    return (
+      <section id={scenario.id} class="scroll-mt-24">
+        <div class="mb-8 flex flex-col gap-3" data-reveal="fade-up">
+          <span class="text-accent text-sm font-medium tracking-wide">
+            {scenario.eyebrow}
+          </span>
+          <h2 class="text-3xl font-semibold lg:text-4xl">{scenario.title}</h2>
+          <p class="text-subtle text-lg">{scenario.desc}</p>
+        </div>
+        <div class={`grid grid-cols-1 gap-4 ${gridClass}`}>
+          {
+            scenario.items.map((item, idx) => (
+              <div
+                class="ease-out group border-border bg-card hover:bg-card-hover flex flex-col gap-3 rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+                data-reveal="fade-up"
+                data-reveal-delay={Math.min(idx * 60, 240)}
+              >
+                <span class="text-3xl">{item.icon}</span>
+                <h3 class="text-lg font-semibold">{item.title}</h3>
+                <p class="text-subtle text-sm">{item.desc}</p>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+    );
+  })
+}

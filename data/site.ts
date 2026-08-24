@@ -23,6 +23,8 @@ export interface ProductSpec {
 export type ProductSection =
   | "overview"
   | "gallery"
+  | "scenarios"
+  | "ecosystem"
   | "features"
   | "code"
   | "specs"
@@ -104,6 +106,27 @@ export interface ProductLinksData {
   items: ProductLinkItem[];
 }
 
+export interface ProductScenarioItem {
+  icon: string;
+  title: string;
+  desc: string;
+}
+
+export interface ProductScenario {
+  id: string;
+  eyebrow: string;
+  title: string;
+  desc: string;
+  items: ProductScenarioItem[];
+}
+
+export interface ProductEcosystem {
+  title: string;
+  desc: string;
+  ctaText: string;
+  ctaHref: string;
+}
+
 /** 产品主题色集合：深色 / 浅色各一组 CSS 变量值 */
 export interface ProductThemeSet {
   /** Hero 径向渐变背景 */
@@ -130,6 +153,12 @@ export interface Product {
   tagline: string;
   /** 一句话产品介绍（可选） */
   desc?: string;
+  /** 发布徽章（可选） */
+  badge?: string;
+  /** 下载地址（可选，提供后 Hero 会显示"立即下载"） */
+  downloadHref?: string;
+  /** 自定义 CTA 标题（可选） */
+  ctaTitle?: string;
   /** 卡片背景图（可选）：填写后横向卡片会用图片替换默认渐变背景 */
   image?: string;
   /** 每页独立配色（深/浅两套） */
@@ -138,6 +167,8 @@ export interface Product {
   sections: ProductSection[];
   overview?: ProductOverviewData;
   gallery?: ProductGalleryData;
+  scenarios?: ProductScenario[];
+  ecosystem?: ProductEcosystem;
   features?: ProductFeaturesData;
   code?: ProductCodeData;
   specs?: ProductSpecsData;
@@ -833,65 +864,129 @@ export const PRODUCTS: Product[] = [
     slug: "vectra",
     title: "山止组件 Vectra",
     subtitle: "方寸之间",
-    tagline: "Windows 桌面小组件",
-    desc: "为 Windows 打造的桌面小组件应用，把 macOS 般的优雅带到你的桌面。",
+    tagline: "Windows 桌面小组件引擎",
+    badge: "Vectra 0.2 · 全新发布",
+    desc: "把小组件放回桌面：Windows 桌面小组件引擎，支持插件、皮肤与 AI 侧边栏。",
+    downloadHref: "https://github.com/MacroSTAR-Org/Vectra/releases",
     theme: PRODUCT_THEMES["vectra"],
-    sections: ["overview", "features", "links", "specs"],
-    overview: {
-      sub: "面向 Windows 的桌面小组件应用，提供类 macOS 的精致小组件体验。",
-      paragraphs: [
-        "山止组件 Vectra 是 MacroSTAR 工作室开源的一款 Windows 桌面小组件应用。它把 macOS 上深受喜爱的小组件体验带到 Windows 桌面，让信息展示、快捷操作与日常工具以精致的小卡片形态常驻桌面。",
-        "以精致美学为设计基石，以强拓展性为核心理念，Vectra 致力于解决 Windows 长期缺少高兼容性小组件的痛点，让每位用户都能按自己的喜好装扮桌面。目前项目正在开源开发中，敬请期待。",
-      ],
-      advantage:
-        "与常见的桌面美化工具相比，Vectra 坚持精致的美学设计，让小组件与桌面融为一体；同时提供开放的拓展能力，让第三方开发者也能轻松创作自己的小组件，让桌面真正属于你。",
+    sections: ["scenarios", "ecosystem"],
+    ctaTitle: "你的桌面，你自己来。",
+    scenarios: [
+      {
+        id: "beauty",
+        eyebrow: "场景 01 · 桌面美化",
+        title: "桌面，就该长成你喜欢的样子",
+        desc: "组件真正住在壁纸上，而不是浮在窗口上。",
+        items: [
+          {
+            icon: "🖥️",
+            title: "真·桌面层",
+            desc: "组件常驻桌面壁纸，始终在所有窗口下面，不会被遮挡。",
+          },
+          {
+            icon: "🌌",
+            title: "壁纸级材料",
+            desc: "云母、玻璃、纯色三档，模糊与着色取自实时壁纸，和桌面浑然一体。",
+          },
+          {
+            icon: "🖌️",
+            title: "皮肤系统",
+            desc: "深色、浅色、自定义主题随时切换，玻璃模糊与着色单独可调。",
+          },
+          {
+            icon: "🖱️",
+            title: "拖得动，记得住",
+            desc: "网格对齐、吸附引导线、多显示器独立记忆，插拔显示器也不乱。",
+          },
+        ],
+      },
+      {
+        id: "efficiency",
+        eyebrow: "场景 02 · 效率工具",
+        title: "常用信息，一抬头就能看见",
+        desc: "时钟、日历、待办、天气，放在桌面上随时可读。",
+        items: [
+          {
+            icon: "🕐",
+            title: "时钟",
+            desc: "数字时钟与日期，支持秒针与 12/24 小时制。",
+          },
+          {
+            icon: "📅",
+            title: "日历",
+            desc: "月历、农历、二十四节气与节假日。",
+          },
+          {
+            icon: "✅",
+            title: "待办",
+            desc: "本地清单，隐藏已完成，数据存在本地。",
+          },
+          {
+            icon: "☀️",
+            title: "天气",
+            desc: "Open-Meteo，无需 API Key，自动定位。",
+          },
+        ],
+      },
+      {
+        id: "music",
+        eyebrow: "场景 03 · 音乐歌词",
+        title: "听歌的时候，歌词就在桌面上",
+        desc: "读取系统正在播放的音乐，歌词跟着旋律滚动。",
+        items: [
+          {
+            icon: "🎵",
+            title: "系统媒体",
+            desc: "读取系统播放状态，显示封面、进度与滚动歌词。",
+          },
+          {
+            icon: "📜",
+            title: "滚动歌词",
+            desc: "歌词随播放进度滚动，支持多种尺寸与翻译。",
+          },
+          {
+            icon: "🔎",
+            title: "歌词来源",
+            desc: "网易云优先，找不到再试 LRCLIB，欧美歌更全。",
+          },
+        ],
+      },
+      {
+        id: "ai",
+        eyebrow: "场景 04 · AI 助手",
+        title: "按下快捷键，AI 就在身边",
+        desc: "Ctrl + Alt + Space 呼出侧边栏，随时提问、解读文件、控制系统。",
+        items: [
+          {
+            icon: "⌨️",
+            title: "快速呼出",
+            desc: "全局快捷键 Ctrl + Alt + Space，随时唤出与隐藏。",
+          },
+          {
+            icon: "📄",
+            title: "文件解读",
+            desc: "支持 txt、md、json、csv、docx、xlsx、PDF 等文件。",
+          },
+          {
+            icon: "🛠️",
+            title: "工具调用",
+            desc: "读文件、查系统、调音量，高风险操作需确认。",
+          },
+          {
+            icon: "🤖",
+            title: "多模型兼容",
+            desc: "OpenAI 兼容接口，可自定义 baseUrl 与模型。",
+          },
+        ],
+      },
+    ],
+    ecosystem: {
+      title: "你的桌面，不止这几种组件",
+      desc: "一个 manifest.json 加一个 index.js 就是一个新组件。QuickJS 沙箱隔离，插件之间互不干扰，任何人都能写自己的桌面组件。",
+      ctaText: "开始写插件",
+      ctaHref: "https://github.com/MacroSTAR-Org/Vectra/blob/main/PLUGIN_DEV.md",
     },
-    features: {
-      sub: "让 Windows 桌面，不再只是图标与壁纸。",
-      items: [
-        {
-          icon: "🎨",
-          title: "精致美学",
-          desc: "以 macOS 为灵感，每一处细节都经得起端详。",
-        },
-        {
-          icon: "🧩",
-          title: "拓展性强",
-          desc: "开放的拓展能力，让更多小组件源源不断涌现。",
-        },
-        {
-          icon: "🪟",
-          title: "Windows 原生",
-          desc: "专为 Windows 桌面打造，兼容性更高、体验更顺滑。",
-        },
-        {
-          icon: "🏠",
-          title: "桌面小组件",
-          desc: "信息、工具与快捷操作，以小卡片形态常驻桌面。",
-        },
-      ],
-    },
-    links: {
-      sub: "开源共建，从 GitHub 开始。",
-      items: [
-        {
-          text: "GitHub 仓库",
-          desc: "MacroSTAR-Org/Vectra",
-          href: "https://github.com/MacroSTAR-Org/Vectra",
-        },
-      ],
-    },
-    specs: {
-      sub: "项目开源开发中，以下为规划方向，最终以产品发布为准。",
-      items: [
-        { label: "产品形态", value: "Windows 桌面小组件应用" },
-        { label: "设计理念", value: "精致美学 · 类 macOS 体验" },
-        { label: "核心特色", value: "桌面小组件 · 强拓展性" },
-        { label: "项目状态", value: "开源开发中，敬请期待" },
-        { label: "版本", value: "待补充" },
-      ],
-    },
-    ctaSub: "想让 Windows 桌面拥有更多美好？告诉我们你想要的小组件。",
+    ctaSub: "准备好体验 Vectra 0.2 了吗？",
     email: "contact@macrostar.top",
   },
   {
