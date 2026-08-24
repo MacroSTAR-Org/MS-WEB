@@ -4,7 +4,7 @@ const firstChar = (s: string) => Array.from(s)[0] ?? "?";
 
 const FriendlyLinks = () => (
   <section id="links" className="scroll-mt-24">
-    <div className="mb-12 flex flex-col gap-4" data-aos="fade-up">
+    <div className="mb-12 flex flex-col gap-4" data-reveal="fade-up">
       <h2 className="text-3xl font-semibold lg:text-4xl">
         {FRIENDLY_LINKS.heading}
       </h2>
@@ -18,12 +18,12 @@ const FriendlyLinks = () => (
           href={link.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="ease-bounce group flex items-center gap-4 rounded-2xl border border-border bg-card/80 p-4 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-card-hover focus-visible:ring-2 focus-visible:ring-accent"
-          data-aos="fade-up"
-          data-aos-delay={Math.min(idx * 80, 400)}
+          className="ease-out group flex items-center gap-4 rounded-2xl border border-border bg-card/80 p-4 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:bg-card-hover focus-visible:ring-2 focus-visible:ring-accent"
+          data-reveal="fade-up"
+          data-reveal-delay={Math.min(idx * 60, 240)}
         >
           {/* Logo区域 */}
-          <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-card transition-transform duration-300 group-hover:scale-105">
+          <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-card transition-transform duration-500 group-hover:scale-105">
             {link.logo ? (
               <img
                 src={link.logo}

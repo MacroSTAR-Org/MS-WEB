@@ -18,7 +18,7 @@ const firstSection = product.sections[0] ?? "overview";
   <div
     class="max-w-8xl relative z-10 mx-auto flex w-full flex-col items-start gap-4 px-8 pt-32 pb-16 md:px-12 lg:px-16 xl:px-24"
   >
-    <div class="text-subtle text-sm" data-aos="fade-down">
+    <div class="text-subtle text-sm" data-reveal="fade-down">
       <a href="/" class="hover:text-foreground transition-colors"
         >{C.breadcrumbHome}</a
       >
@@ -27,20 +27,20 @@ const firstSection = product.sections[0] ?? "overview";
     </div>
     <span
       class="border-border-strong bg-translucent text-muted rounded-full border px-3 py-1 text-xs tracking-wide backdrop-blur-sm"
-      data-aos="fade-right"
+      data-reveal="fade-right"
     >
       {product.tagline}
     </span>
     <h1
       class="text-4xl leading-snug font-semibold lg:text-5xl xl:text-6xl"
-      data-aos="fade-right"
+      data-reveal="fade-right"
     >
       {product.title}
     </h1>
     <h2
       class="gradient-text text-2xl font-semibold lg:text-3xl"
-      data-aos="fade-right"
-      data-aos-delay="100"
+      data-reveal="fade-right"
+      data-reveal-delay="60"
     >
       {product.subtitle}
     </h2>
@@ -48,8 +48,8 @@ const firstSection = product.sections[0] ?? "overview";
       product.desc && (
         <p
           class="text-muted max-w-xl text-lg"
-          data-aos="fade-up"
-          data-aos-delay="200"
+          data-reveal="fade-up"
+          data-reveal-delay="120"
         >
           {product.desc}
         </p>
@@ -57,8 +57,8 @@ const firstSection = product.sections[0] ?? "overview";
     }
     <div
       class="mt-4 flex flex-col gap-4 md:flex-row"
-      data-aos="fade-up"
-      data-aos-delay="300"
+      data-reveal="fade-up"
+      data-reveal-delay="180"
     >
       <Button
         href={`#${firstSection}`}

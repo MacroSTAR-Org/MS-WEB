@@ -14,7 +14,7 @@ const firstChar = (s: string) => Array.from(s)[0] ?? "?";
 const HonorWall = () => {
   return (
     <section id="honor-wall" className="scroll-mt-24">
-      <div className="mb-12 flex flex-col gap-4" data-aos="fade-up">
+      <div className="mb-12 flex flex-col gap-4" data-reveal="fade-up">
         <h2 className="text-3xl font-semibold lg:text-4xl">
           {HONOR_WALL.heading}
         </h2>
@@ -28,9 +28,9 @@ const HonorWall = () => {
             <div
               key={`${m.name}-${idx}`}
               tabIndex={0}
-              className="ease-bounce group relative aspect-square overflow-hidden rounded-2xl border border-border outline-none transition-all duration-300 hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-accent"
-              data-aos="fade-up"
-              data-aos-delay={Math.min(idx * 40, 400)}
+              className="ease-out group relative aspect-square overflow-hidden rounded-2xl border border-border outline-none transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg focus-visible:ring-2 focus-visible:ring-accent"
+              data-reveal="fade-up"
+              data-reveal-delay={Math.min(idx * 40, 240)}
             >
               {/* 照片 / 金色占位 */}
               {m.avatar ? (
@@ -58,7 +58,7 @@ const HonorWall = () => {
               )}
 
               {/* 暗色遮罩：底部常驻，hover/聚焦时加深 */}
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent transition-all duration-300 group-hover:from-black/90 group-hover:via-black/40 group-focus-within:from-black/90 group-focus-within:via-black/40" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-95 group-focus-within:opacity-95" />
 
               {/* 信息层（文字固定白色，深浅模式均可读） */}
               <div className="absolute inset-x-0 bottom-0 z-10 flex flex-col p-3 text-white sm:p-4">
@@ -76,7 +76,7 @@ const HonorWall = () => {
 
                 {/* hover / 聚焦展开：贡献 + 年份 + 标签（grid-rows 0fr→1fr 平滑展开） */}
                 {hasReveal && (
-                  <div className="grid grid-rows-[0fr] opacity-0 transition-all duration-300 group-hover:grid-rows-[1fr] group-hover:opacity-100 group-focus-within:grid-rows-[1fr] group-focus-within:opacity-100">
+                  <div className="grid translate-y-1 grid-rows-[0fr] opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:grid-rows-[1fr] group-hover:opacity-100 group-focus-within:translate-y-0 group-focus-within:grid-rows-[1fr] group-focus-within:opacity-100">
                     <div className="overflow-hidden">
                       {m.contribution && (
                         <p className="mt-2 text-xs leading-relaxed text-white/80">

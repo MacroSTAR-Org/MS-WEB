@@ -28,7 +28,7 @@ const ProductCarousel = () => {
     <section id="products" className="scroll-mt-24">
       <div
         className="mb-8 flex items-end justify-between gap-4"
-        data-aos="fade-up"
+        data-reveal="fade-up"
       >
         <div className="flex flex-col gap-4">
           <h2 className="text-3xl font-semibold lg:text-4xl">
@@ -42,7 +42,7 @@ const ProductCarousel = () => {
             type="button"
             aria-label="上一个"
             onClick={() => scrollBy(-1)}
-            className="ease-bounce flex h-11 w-11 items-center justify-center rounded-full border border-border bg-translucent text-xl text-foreground transition-all duration-300 hover:scale-105 hover:bg-translucent-hover"
+            className="ease-out flex h-11 w-11 items-center justify-center rounded-full border border-border bg-translucent text-xl text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-translucent-hover"
           >
             &#8249;
           </button>
@@ -50,7 +50,7 @@ const ProductCarousel = () => {
             type="button"
             aria-label="下一个"
             onClick={() => scrollBy(1)}
-            className="ease-bounce flex h-11 w-11 items-center justify-center rounded-full border border-border bg-translucent text-xl text-foreground transition-all duration-300 hover:scale-105 hover:bg-translucent-hover"
+            className="ease-out flex h-11 w-11 items-center justify-center rounded-full border border-border bg-translucent text-xl text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-translucent-hover"
           >
             &#8250;
           </button>
@@ -65,9 +65,9 @@ const ProductCarousel = () => {
           <a
             key={p.slug}
             href={`/products/${p.slug}`}
-            className="ease-bounce group relative flex h-64 w-[80%] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-border transition-all duration-300 hover:scale-[1.02] sm:w-72 lg:h-72 lg:w-80"
-            data-aos="fade-left"
-            data-aos-delay={idx * 100}
+            className="ease-out group relative flex h-64 w-[80%] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-border transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg sm:w-72 lg:h-72 lg:w-80"
+            data-reveal="fade-left"
+            data-reveal-delay={Math.min(idx * 60, 240)}
           >
             {/* ===== 背景层：渐变（后期可用图片替换） ===== */}
             <div className="absolute inset-0">
@@ -75,7 +75,7 @@ const ProductCarousel = () => {
                 <img
                   src={p.image}
                   alt={p.title}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               ) : (
                 <div

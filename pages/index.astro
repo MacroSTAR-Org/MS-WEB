@@ -8,11 +8,11 @@ import ContactSection from "../components/ContactSection";
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout transition:animate="slide">
+<Layout transition:animate="fade">
   <Hero />
   <div class="max-w-8xl mx-auto flex flex-col gap-16 overflow-hidden py-16">
     <div
-      class="ease-bounce flex flex-col gap-24 px-8 transition-all duration-500 md:px-12 lg:px-16 xl:px-24"
+      class="ease-out flex flex-col gap-24 px-8 transition-all duration-500 md:px-12 lg:px-16 xl:px-24"
     >
       <ProductCarousel client:visible />
       <ContactSection />

@@ -152,13 +152,13 @@ export interface Product {
 
 export const SITE = {
   name: "MacroSTAR",
-  title: "宏维星智 - 智慧科技工作室",
+  title: "宏维星智 - 网络技术工作室",
   email: "contact@macrostar.top",
 };
 
 export const HERO = {
   title: "MacroSTAR Studio",
-  subtitle: "宏维星智智慧科技工作室",
+  subtitle: "宏维星智网络技术工作室",
   description: "漫天星光，终将汇聚宏维星河！",
   explore: "了解产品",
   contact: "联系我们",
@@ -177,7 +177,7 @@ export const ABOUT = {
   sub: "无论是合作咨询、技术交流还是日常闲聊，我们都在这里。",
   /** 左侧介绍文案（请自行替换） */
   intro:
-    "MacroSTAR 工作室（宏维星智）是一个以创新为驱动力的学生技术团队。我们相信「漫天星光，终将汇聚宏维星河」——每一个小创意都值得被认真对待，每一位伙伴都是不可或缺的星光。欢迎通过右侧方式联系我们，期待与你相遇。",
+    "宏维星智网络技术工作室（MacroSTAR）是一个以创新为驱动力的学生技术团队。我们相信「漫天星光，终将汇聚宏维星河」——每一个小创意都值得被认真对待，每一位伙伴都是不可或缺的星光。欢迎通过右侧方式联系我们，期待与你相遇。",
   methods: [
     {
       icon: "📧",
@@ -399,9 +399,9 @@ export const HONOR_WALL: {
     },
     {
       name: "后藤一里",
-      role: "软件工程 高级副总裁",
+      role: "前 软件工程 高级副总裁",
       contribution: "工作室代码的开山鼻祖。",
-      period: "2024 - 至今",
+      period: "2024 - 2026",
       badge: "已离任",
       avatar: "https://q1.qlogo.cn/g?b=qq&nk=1348472639%7D&s=640",
     },
@@ -493,7 +493,7 @@ export const FOOTER = {
       items: [
         { text: "Lunar X", href: "/products/lunar-x" },
         { text: "林笙 · Linden", href: "/products/linden" },
-        { text: "MacroWidgets", href: "/products/macrowidgets" },
+        { text: "Vectra", href: "/products/vectra" },
         { text: "Lunar Bot 3", href: "/products/lunar-bot-3" },
         { text: "Lunar Valley XI", href: "/products/valley" },
       ],
@@ -607,8 +607,8 @@ export const PRODUCT_THEMES: Record<string, ProductTheme> = {
       accentHover: "#047857",
     },
   },
-  /* MacroWidgets —— 品红 / 紫 */
-  macrowidgets: {
+  /* Vectra —— 品红 / 紫 */
+  vectra: {
     dark: {
       radial:
         "radial-gradient(ellipse at left bottom, #3c1033 0%, #241126 50%, #391f44 100%)",
@@ -830,21 +830,21 @@ export const PRODUCTS: Product[] = [
     email: "contact@macrostar.top",
   },
   {
-    slug: "macrowidgets",
-    title: "山止组件 MacroWidgets",
+    slug: "vectra",
+    title: "山止组件 Vectra",
     subtitle: "方寸之间",
     tagline: "Windows 桌面小组件",
     desc: "为 Windows 打造的桌面小组件应用，把 macOS 般的优雅带到你的桌面。",
-    theme: PRODUCT_THEMES["macrowidgets"],
+    theme: PRODUCT_THEMES["vectra"],
     sections: ["overview", "features", "links", "specs"],
     overview: {
       sub: "面向 Windows 的桌面小组件应用，提供类 macOS 的精致小组件体验。",
       paragraphs: [
-        "山止组件 MacroWidgets 是 MacroSTAR 工作室开源的一款 Windows 桌面小组件应用。它把 macOS 上深受喜爱的小组件体验带到 Windows 桌面，让信息展示、快捷操作与日常工具以精致的小卡片形态常驻桌面。",
-        "以精致美学为设计基石，以强拓展性为核心理念，MacroWidgets 致力于解决 Windows 长期缺少高兼容性小组件的痛点，让每位用户都能按自己的喜好装扮桌面。目前项目正在开源开发中，敬请期待。",
+        "山止组件 Vectra 是 MacroSTAR 工作室开源的一款 Windows 桌面小组件应用。它把 macOS 上深受喜爱的小组件体验带到 Windows 桌面，让信息展示、快捷操作与日常工具以精致的小卡片形态常驻桌面。",
+        "以精致美学为设计基石，以强拓展性为核心理念，Vectra 致力于解决 Windows 长期缺少高兼容性小组件的痛点，让每位用户都能按自己的喜好装扮桌面。目前项目正在开源开发中，敬请期待。",
       ],
       advantage:
-        "与常见的桌面美化工具相比，MacroWidgets 坚持精致的美学设计，让小组件与桌面融为一体；同时提供开放的拓展能力，让第三方开发者也能轻松创作自己的小组件，让桌面真正属于你。",
+        "与常见的桌面美化工具相比，Vectra 坚持精致的美学设计，让小组件与桌面融为一体；同时提供开放的拓展能力，让第三方开发者也能轻松创作自己的小组件，让桌面真正属于你。",
     },
     features: {
       sub: "让 Windows 桌面，不再只是图标与壁纸。",
@@ -876,8 +876,8 @@ export const PRODUCTS: Product[] = [
       items: [
         {
           text: "GitHub 仓库",
-          desc: "MacroSTAR-Org/MacroWidgets",
-          href: "https://github.com/MacroSTAR-Org/MacroWidgets",
+          desc: "MacroSTAR-Org/Vectra",
+          href: "https://github.com/MacroSTAR-Org/Vectra",
         },
       ],
     },

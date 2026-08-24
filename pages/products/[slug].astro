@@ -34,7 +34,7 @@ function themeCss(slug: string, theme: ProductTheme): string {
 const scopeCss = themeCss(product.slug, product.theme);
 ---
 
-<Layout title={product.title} transition:animate="slide">
+<Layout title={product.title} transition:animate="fade">
   <style is:inline set:html={scopeCss}></style>
   <div class="product-scope" data-product={product.slug}>
     <!-- ============ 产品 Hero（公共骨架） ============ -->

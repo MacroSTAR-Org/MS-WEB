@@ -10,14 +10,14 @@ const { data } = Astro.props;
 ---
 
 <section id="overview" class="scroll-mt-24">
-  <div class="mb-8 flex flex-col gap-4" data-aos="fade-up">
+  <div class="mb-8 flex flex-col gap-4" data-reveal="fade-up">
     <h2 class="text-3xl font-semibold lg:text-4xl">{C.overviewTitle}</h2>
     <p class="text-subtle text-lg">{data.sub}</p>
   </div>
   <div
     class="text-muted flex flex-col gap-4"
-    data-aos="fade-up"
-    data-aos-delay="100"
+    data-reveal="fade-up"
+    data-reveal-delay="60"
   >
     {data.paragraphs.map((p) => <p class="leading-relaxed">{p}</p>)}
     <h3 class="text-foreground mt-4 text-xl font-semibold">{C.advTitle}</h3>

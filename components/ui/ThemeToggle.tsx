@@ -104,10 +104,15 @@ const ThemeToggle = ({ variant = "icon" }: { variant?: "icon" | "row" }) => {
         type="button"
         onClick={cycle}
         aria-label={`主题：${LABELS[current]}`}
-        className="ease-bounce flex w-full items-center justify-between rounded-lg px-3 py-2 text-muted transition-colors hover:bg-translucent-hover hover:text-foreground"
+        className="ease-out flex w-full items-center justify-between rounded-lg px-3 py-2 text-muted transition-colors hover:bg-translucent-hover hover:text-foreground"
       >
         <span className="flex items-center gap-2">
-          {icons[current]}
+          <span
+            key={current}
+            className="theme-icon-animate flex h-5 w-5 items-center justify-center"
+          >
+            {icons[current]}
+          </span>
           主题
         </span>
         <span className="text-sm text-subtle">{LABELS[current]}</span>
@@ -121,9 +126,14 @@ const ThemeToggle = ({ variant = "icon" }: { variant?: "icon" | "row" }) => {
       onClick={cycle}
       aria-label={`主题：${LABELS[current]}（点击切换）`}
       title={`主题：${LABELS[current]}`}
-      className="ease-bounce flex h-9 w-9 items-center justify-center rounded-full border border-border bg-translucent text-foreground transition-all duration-300 hover:scale-105 hover:bg-translucent-hover"
+      className="ease-out flex h-9 w-9 items-center justify-center rounded-full border border-border bg-translucent text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:bg-translucent-hover hover:shadow-lg"
     >
-      {icons[current]}
+      <span
+        key={current}
+        className="theme-icon-animate flex h-5 w-5 items-center justify-center"
+      >
+        {icons[current]}
+      </span>
     </button>
   );
 };

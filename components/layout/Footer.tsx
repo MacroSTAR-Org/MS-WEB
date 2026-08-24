@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="max-w-8xl mx-auto px-8 py-16 md:px-12 lg:px-16 xl:px-24">
         <div className="grid grid-cols-2 gap-10 md:grid-cols-5">
           <div className="col-span-2 md:col-span-1">
-            <span className="gradient-text text-xl font-bold">MacroSTAR</span>
+            <span className="gradient-text-static text-xl font-bold">MacroSTAR</span>
             <p className="mt-4 text-sm leading-relaxed text-subtle">
               {FOOTER.desc}
             </p>

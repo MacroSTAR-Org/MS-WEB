@@ -3,7 +3,7 @@ import "@/styles/global.css";
 import Footer from "../components/layout/Footer";
 import Header from "../components/layout/Header";
 import { ClientRouter } from "astro:transitions";
-import AOSInit from "../components/AOSInit.astro";
+import RevealInit from "../components/RevealInit.astro";
 import { SITE } from "../data/site";
 
 const { title } = Astro.props;
@@ -36,6 +36,7 @@ const { title } = Astro.props;
     <script is:inline>
       (function () {
         try {
+          document.documentElement.classList.add("js");
           var t = localStorage.getItem("theme");
           var root = document.documentElement;
           if (t === "light" || t === "dark") {
@@ -49,12 +50,12 @@ const { title } = Astro.props;
     <ClientRouter />
   </head>
   <body>
-    <Header client:load />
+    <Header client:load initialPath={Astro.url.pathname} />
     <main>
       <slot />
     </main>
     <Footer />
-    <AOSInit />
+    <RevealInit />
     {/* 视图转场后兜底重应用主题（<html> 属性通常已保留，此处防御性处理） */}
     <script>
       document.addEventListener("astro:after-swap", () => {

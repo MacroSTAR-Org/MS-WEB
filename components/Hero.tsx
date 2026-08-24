@@ -1,81 +1,27 @@
-import heroDark from "@/assets/images/herodark.jpg";
-import heroLight from "@/assets/images/herolight.jpg";
-import { Button, TransparentButton } from "@/components/ui/Button";
-import { HERO } from "@/data/site";
-import "aos/dist/aos.css";
+import heroDesktop from "@/assets/images/vectra-0.2-hero.png";
+import heroMobile from "@/assets/images/vectra-0.2-hero-mobile.png";
 
 const Hero = () => {
   return (
-    <div className="relative h-screen w-full overflow-hidden">
-      {/* 径向渐变背景（位于背景图后面），随主题翻转 */}
-      <div className="hero-bg absolute inset-0" />
-
-      {/* 背景图：外层负责独立淡入，内层保留原滑入动画；深/浅各一张 */}
-      <div className="hero-fade-in absolute inset-0">
-        <div
-          className="banner-slide-in dark-only absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${heroDark.src})` }}
-        />
-        <div
-          className="banner-slide-in light-only absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${heroLight.src})` }}
-        />
-      </div>
-      <div className="dark-only absolute inset-0 bg-gradient-to-r from-black/70 to-transparent" />
-      <div className="light-only absolute inset-0 bg-gradient-to-r from-white/70 to-transparent" />
-      {/* 内容容器（相对定位，不受背景动画影响） */}
-      <div className="text-foreground relative h-full">
-        <div className="ease-bounce max-w-8xl relative z-10 mx-auto flex h-full flex-col items-start justify-center gap-4 px-8 transition-all duration-300 md:gap-8 md:px-12 lg:px-16 xl:px-24">
-          <div className="ease-bounce flex flex-col gap-4 transition-all duration-300 md:gap-6">
-            <h1
-              className="text-4xl leading-snug font-semibold lg:text-5xl xl:text-6xl"
-              data-aos="fade-right"
-            >
-              {HERO.title}
-            </h1>
-            <h2
-              className="gradient-text text-2xl font-semibold lg:text-3xl"
-              data-aos="fade-right"
-              data-aos-delay="100"
-            >
-              {HERO.subtitle}
-            </h2>
-            <p
-              className="text-muted max-w-xl text-lg lg:text-xl"
-              data-aos="fade-right"
-              data-aos-delay="200"
-            >
-              {HERO.description}
-            </p>
-            <div
-              className="ease-bounce flex flex-col gap-4 transition-all duration-300 md:flex-row md:gap-8"
-              data-aos="fade-right"
-              data-aos-delay="300"
-            >
-              <Button
-                href="/products/lunar-x"
-                className="flex w-fit flex-row items-center gap-2"
-              >
-                <span className="text-lg lg:text-xl">{HERO.explore}</span>
-              </Button>
-              <TransparentButton
-                href="/#contact"
-                className="flex w-fit flex-row items-center gap-2"
-              >
-                <span className="text-lg lg:text-xl">{HERO.contact}</span>
-              </TransparentButton>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* 向下滚动提示 */}
-      <a
-        href="#products"
-        className="text-muted hover:text-foreground absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-sm transition-colors"
-      >
-        🔽 向下滚动 🔽
-      </a>
-    </div>
+    <a
+      href="/products/vectra"
+      aria-label="Vectra 0.2"
+      className="relative flex h-screen w-full items-center justify-center overflow-hidden bg-black"
+    >
+      <img
+        src={heroDesktop.src}
+        alt="Vectra 0.2 宣传"
+        className="hidden h-full w-full object-contain md:block"
+      />
+      <img
+        src={heroMobile.src}
+        alt="Vectra 0.2 移动端宣传"
+        className="h-full w-full object-contain md:hidden"
+      />
+      <span className="pointer-events-none absolute bottom-6 left-1/2 z-10 -translate-x-1/2 rounded-full border border-white/25 bg-black/35 px-4 py-2 text-sm whitespace-nowrap text-white/90 shadow-lg backdrop-blur-md">
+        ↓ 单击跳转到Vectra介绍，向下滑动以了解更多
+      </span>
+    </a>
   );
 };
 

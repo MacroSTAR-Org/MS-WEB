@@ -10,7 +10,7 @@ const { data } = Astro.props;
 ---
 
 <section id="links" class="scroll-mt-24">
-  <div class="mb-12 flex flex-col gap-4" data-aos="fade-up">
+  <div class="mb-12 flex flex-col gap-4" data-reveal="fade-up">
     <h2 class="text-3xl font-semibold lg:text-4xl">{C.linksTitle}</h2>
     <p class="text-subtle text-lg">{data.sub}</p>
   </div>
@@ -21,9 +21,9 @@ const { data } = Astro.props;
           href={link.href}
           target="_blank"
           rel="noopener"
-          class="ease-bounce group border-border bg-card hover:bg-card-hover flex flex-col gap-2 rounded-2xl border p-6 transition-all duration-300 hover:scale-[1.02]"
-          data-aos="fade-up"
-          data-aos-delay={idx * 100}
+          class="ease-out group border-border bg-card hover:bg-card-hover flex flex-col gap-2 rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+          data-reveal="fade-up"
+          data-reveal-delay={Math.min(idx * 60, 240)}
         >
           <span class="flex items-center gap-2 font-semibold">
             {link.text}

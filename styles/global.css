@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "aos/dist/aos.css";
 
 /* =========================================================
  * 自托管字体 MiSans（子集化产物见 public/fonts/，由
@@ -27,34 +26,34 @@
   font-display: swap;
 }
 
-@keyframes bannerSlideIn {
-  0% {
-    transform: translateX(20%) translateY(20%);
-    opacity: 0.2;
-  }
-  100% {
-    transform: translateX(0) translateY(0);
-    opacity: 0.55;
-  }
-}
-
-.banner-slide-in {
-  opacity: 0.1; /* 初始状态确保半透明 */
-  animation: bannerSlideIn 0.5s ease-out forwards;
-}
-
-@keyframes heroFadeIn {
+@keyframes heroImageIn {
   from {
     opacity: 0;
+    transform: scale(1.06);
   }
   to {
     opacity: 1;
+    transform: scale(1);
   }
 }
 
-.hero-fade-in {
-  opacity: 0; /* 初始完全透明，避免首帧闪现 */
-  animation: heroFadeIn 1s ease-out forwards;
+.hero-image-in {
+  opacity: 0;
+  animation: heroImageIn 1.2s var(--ease-out) forwards;
+}
+
+@keyframes scroll-hint {
+  0%,
+  100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, 6px);
+  }
+}
+
+.scroll-hint {
+  animation: scroll-hint 1.6s ease-in-out infinite;
 }
 
 /* =========================================================
@@ -108,6 +107,9 @@
 
   --ease-bounce: cubic-bezier(0.84, 0, 0.165, 1);
   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --reveal-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --reveal-duration: 420ms;
   --container-8xl: 96rem;
 }
 
@@ -273,6 +275,65 @@ html {
   }
 }
 
+/* 轻量滚动入场：只播一次，JS 不可用时内容保持可见 */
+html.js [data-reveal]:not(.is-revealed) {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+html.js [data-reveal="fade-up"]:not(.is-revealed) {
+  transform: translate3d(0, 28px, 0);
+}
+html.js [data-reveal="fade-down"]:not(.is-revealed) {
+  transform: translate3d(0, -24px, 0);
+}
+html.js [data-reveal="fade-right"]:not(.is-revealed) {
+  transform: translate3d(-28px, 0, 0);
+}
+html.js [data-reveal="fade-left"]:not(.is-revealed) {
+  transform: translate3d(28px, 0, 0);
+}
+html.js [data-reveal="zoom-in"]:not(.is-revealed) {
+  transform: translate3d(0, 12px, 0) scale(0.94);
+}
+html.js [data-reveal].is-revealing {
+  transition:
+    opacity var(--reveal-duration) var(--reveal-ease),
+    transform var(--reveal-duration) var(--reveal-ease);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+html.js [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* 页面转场：柔和淡入淡出 */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 300ms;
+  animation-timing-function: var(--ease-out);
+}
+
+@keyframes theme-turn {
+  from {
+    transform: rotate(-120deg) scale(0.85);
+    opacity: 0.4;
+  }
+  to {
+    transform: rotate(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.theme-icon-animate {
+  animation: theme-turn 240ms var(--reveal-ease);
+}
+
+/* 导航毛玻璃：模糊从顶部到底部渐隐到透明 */
+.header-frost {
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+}
+
 body {
   transition:
     background-color 0.4s var(--ease-standard),
@@ -321,5 +382,19 @@ body {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradient-animation 4s ease infinite;
+  animation: gradient-animation 6s ease infinite;
+}
+
+.gradient-text-static {
+  background: linear-gradient(
+    45deg,
+    var(--grad-1),
+    var(--grad-2),
+    var(--grad-3),
+    var(--grad-1)
+  );
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

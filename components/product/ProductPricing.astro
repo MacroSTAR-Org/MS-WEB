@@ -10,7 +10,7 @@ const { data } = Astro.props;
 ---
 
 <section id="pricing" class="scroll-mt-24">
-  <div class="mb-12 flex flex-col gap-4" data-aos="fade-up">
+  <div class="mb-12 flex flex-col gap-4" data-reveal="fade-up">
     <h2 class="text-3xl font-semibold lg:text-4xl">{C.pricingTitle}</h2>
     <p class="text-subtle text-lg">{data.sub}</p>
   </div>
@@ -18,13 +18,13 @@ const { data } = Astro.props;
     {
       data.tiers.map((tier, idx) => (
         <div
-          class={`ease-bounce relative flex flex-col gap-4 rounded-2xl border p-8 transition-all duration-300 hover:scale-[1.02] ${
+          class={`ease-out relative flex flex-col gap-4 rounded-2xl border p-8 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg ${
             tier.highlight
               ? "border-accent bg-card-hover"
               : "border-border bg-card"
           }`}
-          data-aos="fade-up"
-          data-aos-delay={idx * 100}
+          data-reveal="fade-up"
+          data-reveal-delay={Math.min(idx * 60, 240)}
         >
           {tier.highlight && (
             <span class="bg-accent text-background absolute -top-3 right-6 rounded-full px-3 py-1 text-xs font-semibold">
