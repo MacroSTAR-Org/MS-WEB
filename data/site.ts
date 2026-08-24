@@ -245,11 +245,6 @@ export const TEAM: { heading: string; sub: string; members: Member[] } = {
       avatar: "https://q1.qlogo.cn/g?b=qq&nk=2473768771%7D&s=640",
     },
     {
-      name: "后藤一里",
-      role: "软件工程 高级副总裁",
-      avatar: "https://q1.qlogo.cn/g?b=qq&nk=1348472639%7D&s=640",
-    },
-    {
       name: "Maozi",
       role: "副总裁",
       avatar: "https://q1.qlogo.cn/g?b=qq&nk=2180312206%7D&s=640",
@@ -407,7 +402,7 @@ export const HONOR_WALL: {
       role: "软件工程 高级副总裁",
       contribution: "工作室代码的开山鼻祖。",
       period: "2024 - 至今",
-      badge: "荣誉成员",
+      badge: "已离任",
       avatar: "https://q1.qlogo.cn/g?b=qq&nk=1348472639%7D&s=640",
     },
   ],
