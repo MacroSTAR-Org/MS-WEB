@@ -1,5 +1,5 @@
 import { Button, TransparentButton } from "@/components/ui/Button";
-import { ABOUT, SITE } from "@/data/site";
+import { ABOUT } from "@/data/site";
 
 const ContactSection = () => {
   return (
@@ -70,7 +70,7 @@ const ContactSection = () => {
           <p className="text-muted text-lg">{ABOUT.cta.sub}</p>
           <div className="mt-4 flex flex-col gap-4 md:flex-row">
             <Button
-              href={`mailto:${SITE.email}`}
+              href="/handbook"
               className="flex w-fit items-center gap-2"
             >
               <span className="text-lg">{ABOUT.cta.emailBtn}</span>

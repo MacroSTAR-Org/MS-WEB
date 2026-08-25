@@ -236,9 +236,9 @@ export const ABOUT = {
     },
   ] as ContactMethod[],
   cta: {
-    title: "商务合作",
-    sub: "准备好项目了吗？联系我们的商务团队，开启合作。",
-    emailBtn: "发送邮件",
+    title: "MacroSTAR Handbook｜星智手册",
+    sub: "https://macrostar.top/handbook",
+    emailBtn: "点击跳转",
     communityBtn: "加入社区",
   },
 };
