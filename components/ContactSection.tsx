@@ -16,7 +16,7 @@ const ContactSection = () => {
         <div className="flex flex-col justify-center gap-4" data-reveal="fade-up">
           <div className="flex items-center gap-3">
             <img
-              src="https://img.macrostar.top/blue.svg"
+              src="/logo-blue.png"
               alt="MacroSTAR logo"
               className="h-10 w-10"
             />
