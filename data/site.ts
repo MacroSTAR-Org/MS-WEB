@@ -270,8 +270,8 @@ export const TEAM: { heading: string; sub: string; members: Member[] } = {
   members: [
     {
       name: "夏子涵",
-      role: "首席执行官&创始人&董事长",
-      tags: ["全栈"],
+      role: "首席运营官&创始人&董事长",
+      tags: ["全栈","Co-Founder"],
       bio: "Hello World.",
       avatar: "https://q1.qlogo.cn/g?b=qq&nk=2473768771%7D&s=640",
     },
@@ -281,9 +281,15 @@ export const TEAM: { heading: string; sub: string; members: Member[] } = {
       avatar: "https://q1.qlogo.cn/g?b=qq&nk=2180312206%7D&s=640",
     },
     {
-      name: "木易yany",
-      role: "法务总监",
-      avatar: "https://q1.qlogo.cn/g?b=qq&nk=1493383980%7D&s=640",
+      name: "后藤一里",
+      role: "软件工程 高级副总裁",
+      bio: "荣誉成员",
+      avatar: "https://q1.qlogo.cn/g?b=qq&nk=1348472639%7D&s=640",
+    },
+    {
+      name: "AstrZero",
+      role: "首席执行官",
+      avatar: "https://q1.qlogo.cn/g?b=qq&nk=2285174104%7D&s=640",
     },
     {
       name: "SR思锐 开发者",
@@ -352,7 +358,7 @@ export const TEAM: { heading: string; sub: string; members: Member[] } = {
     },
     {
       name: "困困鱼",
-      role: "宏吾星耀-运营总监",
+      role: "宏吾星耀-首席运营官",
       avatar: "https://q1.qlogo.cn/g?b=qq&nk=3211998128%7D&s=640",
     },
     {
@@ -430,10 +436,10 @@ export const HONOR_WALL: {
     },
     {
       name: "后藤一里",
-      role: "前 软件工程 高级副总裁",
-      contribution: "工作室代码的开山鼻祖。",
+      role: "软件工程 高级副总裁",
+      contribution: "工作室代码的Founder。",
       period: "2024 - 2026",
-      badge: "已离任",
+      badge: "荣誉成员",
       avatar: "https://q1.qlogo.cn/g?b=qq&nk=1348472639%7D&s=640",
     },
   ],
@@ -466,15 +472,9 @@ export const FRIENDLY_LINKS: {
       logo: "/logos/sr-studio.png",
     },
     {
-      name: "DCR 学生互助频道",
-      url: "https://www.dcr2026.com/",
-      desc: "一个温暖、免费、专业、易用的学生互助社区",
-      logo: "/logos/dcr.png",
-    },
-    {
-      name: "Class Widgets",
-      url: "https://classwidgets.rinlit.cn/",
-      desc: "多样的桌面课表",
+      name: "Class Widgets 2",
+      url: "https://www.bilibili.com/video/BV1PS8v6QE8a/?share_source=copy_web&vd_source=21682d0b566ff12da2bc5f99136f729a",
+      desc: "课程表的终极形态。",
       logo: "/logos/classwidgets.png",
     },
     {
@@ -486,13 +486,13 @@ export const FRIENDLY_LINKS: {
     {
       name: "ColudAI",
       url: "https://coludai.cn/",
-      desc: "创新，开启新世界；下一代人工智能解决方案",
+      desc: "创新，开启新世界；下一代人工智能解决方案。",
       logo: "/logos/coludai.png",
     },
     {
       name: "Project Hazelita",
       url: "https://qm.qq.com/q/RoDLH2u7SY",
-      desc: "一个友爱、开放、友好、多样的技术交流社群",
+      desc: "一个友爱、开放、友好、多样的技术交流社群。",
       logo: "/logos/hazelita.png",
     },
     {
@@ -500,12 +500,6 @@ export const FRIENDLY_LINKS: {
       url: "https://www.bilibili.com/opus/1095287012097785861",
       desc: "智慧优化体验，便利走进全民。",
       logo: "/logos/starfire.png",
-    },
-    {
-      name: "apanzinc",
-      url: "https://apanzinc.top/", 
-      desc: "我是 apanzinc，一名初三学生，专注于前后端开发与人工智能应用的学习与实践。",
-      logo: "https://static.apanzinc.top/apanzinc/logo.png",
     },
   ],
 };
@@ -523,7 +517,6 @@ export const FOOTER = {
       title: "服务",
       items: [
         { text: "Lunar X", href: "/products/lunar-x" },
-        { text: "林笙 · Linden", href: "/products/linden" },
         { text: "Vectra", href: "/products/vectra" },
         { text: "Lunar Bot 3", href: "/products/lunar-bot-3" },
         { text: "Lunar Valley XI", href: "/products/valley" },
@@ -615,29 +608,6 @@ export const PRODUCT_THEMES: Record<string, ProductTheme> = {
       accentHover: "#1d4ed8",
     },
   },
-  /* Linden —— 翠 / 青 */
-  linden: {
-    dark: {
-      radial:
-        "radial-gradient(ellipse at left bottom, #0e3f2c 0%, #11241c 50%, #16352b 100%)",
-      ctaRadial: "radial-gradient(ellipse at center, #0e3f2c 0%, #11121c 80%)",
-      grad1: "#34d399",
-      grad2: "#2dd4bf",
-      grad3: "#22d3ee",
-      accent: "#34d399",
-      accentHover: "#6ee7b7",
-    },
-    light: {
-      radial:
-        "radial-gradient(ellipse at left bottom, #d5f5e6 0%, #eefbf4 50%, #e0f5ee 100%)",
-      ctaRadial: "radial-gradient(ellipse at center, #d5f5e6 0%, #f7f8fb 80%)",
-      grad1: "#059669",
-      grad2: "#0d9488",
-      grad3: "#0891b2",
-      accent: "#059669",
-      accentHover: "#047857",
-    },
-  },
   /* Vectra —— 品红 / 紫 */
   vectra: {
     dark: {
@@ -718,13 +688,13 @@ export const PRODUCTS: Product[] = [
     title: "Lunar X",
     subtitle: "新势力，轻装上阵",
     tagline: "QQ 机器人框架",
-    desc: "MacroSTAR 自主打造的新一代 QQ 机器人框架：模块化、轻量化，人人皆可上手的机器人开发体验。",
+    desc: "宏维星智自主打造的新一代 QQ 机器人框架：模块化、轻量化，人人皆可上手的机器人开发体验。",
     theme: PRODUCT_THEMES["lunar-x"],
     sections: ["overview", "gallery", "features", "links", "specs"],
     overview: {
       sub: "基于 OneBot / Milky 协议的新一代 QQ 机器人框架，由 MacroSTAR 工作室自主打造。",
       paragraphs: [
-        "Lunar X 是 MacroSTAR 工作室自主打造的新一代 QQ 机器人框架，原生对接 OneBot 与 Milky 协议。它摒弃了传统框架的复杂配置与臃肿体积，以模块化、轻量化为核心设计理念，让机器人的开发与维护变得前所未有的简单。",
+        "Lunar X 是 宏维星智自主打造的新一代 QQ 机器人框架，原生对接 OneBot 与 Milky 协议。它摒弃了传统框架的复杂配置与臃肿体积，以模块化、轻量化为核心设计理念，让机器人的开发与维护变得前所未有的简单。",
         "无论你是经验丰富的开发者，还是第一次接触 QQ 机器人，Lunar X 都能让你快速上手：开箱即用的 WebUI 管理面板、即装即用的插件生态，配合现代简洁的设计语言，从安装到第一个可用机器人只需几分钟。",
       ],
       advantage:
@@ -803,61 +773,6 @@ export const PRODUCTS: Product[] = [
       ],
     },
     ctaSub: "想用 Lunar X 搭建你的第一个机器人？或需要定制化插件与部署支持？",
-    email: "contact@macrostar.top",
-  },
-  {
-    slug: "linden",
-    title: "林笙 · Linden",
-    subtitle: "陪你，帮你，让你，做你",
-    tagline: "桌面 AI 智能体",
-    desc: "不止是帮你完成任务的智能体，更是长久陪伴在你身边的伙伴。",
-    theme: PRODUCT_THEMES["linden"],
-    sections: ["overview", "features", "specs"],
-    overview: {
-      sub: "AI Agent + Human：既帮你解决问题，也陪伴你的情绪。",
-      paragraphs: [
-        "林笙 · Linden 是 MacroSTAR 工作室正在立项的桌面端 AI 智能体。它不止是一个帮你完成任务的助手，更是一位长久陪伴在你身边的伙伴——我们希望它在帮你处理事务的同时，也能倾听你的心情、回应你的情绪，让每一次交互都带着温度。",
-        "「陪你，帮你，让你，做你」——陪伴你度过每一天，帮你解决一个个难题，让你不被烦心事打扰，真正做你自己。目前产品仍在立项研发阶段，敬请期待。",
-      ],
-      advantage:
-        "与纯粹的效率型 AI 助手不同，林笙把情感陪伴作为与任务执行同等重要的核心能力：既能高效帮你处理工作与生活中的琐事，也会在你低落时给予倾听与回应，让技术不再是冷冰冰的工具，而是真正懂你的伙伴。",
-    },
-    features: {
-      sub: "以「人」为核心的产品理念。",
-      items: [
-        {
-          icon: "💗",
-          title: "情感陪伴",
-          desc: "倾听你的心情，回应你的情绪，无时无刻的陪伴。",
-        },
-        {
-          icon: "🤖",
-          title: "AI 任务执行",
-          desc: "像 Agent 一样自动帮你完成工作与生活琐事。",
-        },
-        {
-          icon: "🌿",
-          title: "守护安宁",
-          desc: "帮你挡下烦心事，让你做你自己。",
-        },
-        {
-          icon: "🖥️",
-          title: "桌面端形态",
-          desc: "常驻桌面的贴心伙伴，随时在身边。",
-        },
-      ],
-    },
-    specs: {
-      sub: "项目立项中，以下为规划方向，最终以产品发布为准。",
-      items: [
-        { label: "产品形态", value: "桌面端 AI 智能体" },
-        { label: "产品理念", value: "AI Agent + Human 陪伴" },
-        { label: "核心特色", value: "情感模块 · 任务执行" },
-        { label: "项目状态", value: "立项中，敬请期待" },
-        { label: "版本", value: "未发布" },
-      ],
-    },
-    ctaSub: "期待与林笙见面？告诉我们你的想法与需求，我们一起让它变得更好。",
     email: "contact@macrostar.top",
   },
   {
@@ -1029,11 +944,11 @@ export const PRODUCTS: Product[] = [
     overview: {
       sub: "由 Starfire Team 与 MacroSTAR 联合打造的 Windows 二次美化系统。",
       paragraphs: [
-        "LunarValleyX 是由 Starfire Team 联合打造的 Windows 二次美化系统。它致力于提供更优美的系统界面，同时对系统进行一定量的优化，让你的 Windows 焕然一新。",
-        "正如它的副标题「More Beautiful」——更优美，是 LunarValleyX 不变的追求。从视觉细节到运行体验，它都在努力让每一次使用都赏心悦目。",
+        "Lunar Valley XI 是由 Starfire United Team 与 宏维星智 联合打造的 Windows 二次美化系统。它致力于提供更优美的系统界面，同时对系统进行一定量的优化，让你的 Windows 焕然一新。",
+        "正如它的副标题「More Beautiful」——更优美，是 Lunar Valley XI 不变的追求。从视觉细节到运行体验，它都在努力让每一次使用都赏心悦目。",
       ],
       advantage:
-        "LunarValleyX 将美观与性能合二为一：在带来更优美系统界面的同时兼顾系统优化，让美化不再以牺牲流畅为代价。",
+        "Lunar Valley XI 将美观与性能合二为一：在带来更优美系统界面的同时兼顾系统优化，让美化不再以牺牲流畅为代价。",
     },
     gallery: {
       sub: "更优美的系统界面，眼见为实。（截图素材待补充）",
@@ -1083,7 +998,7 @@ export const PRODUCTS: Product[] = [
       text: "意见反馈",
       href: "#",
     },
-    ctaSub: "想让 Windows 更优美？欢迎体验 LunarValleyX，或告诉我们你的想法。",
+    ctaSub: "想让 Windows 更优美？欢迎体验 Lunar Valley XI，或告诉我们你的想法。",
     email: "contact@macrostar.top",
   },
 ];
