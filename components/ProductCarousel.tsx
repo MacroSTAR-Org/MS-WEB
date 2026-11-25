@@ -4,13 +4,20 @@ import { PRODUCTS, PRODUCTS_NAV, PRODUCT_COMMON as C } from "@/data/site";
 /**
  * 每张卡片的默认渐变背景预设（无 image 时使用）。
  * 后期若在 data/site.ts 的产品上填写 image 字段，图片会自动替换此渐变。
+ * 注意：按 PRODUCTS 顺序一一对应，新增产品时把预设插到同一位置，
+ * 否则后面所有卡片的配色会整体错位。
  */
 const GRADIENTS = [
-  "from-blue-600/40 via-indigo-700/30 to-purple-700/40",
-  "from-emerald-600/40 via-teal-700/30 to-cyan-700/40",
-  "from-fuchsia-600/40 via-purple-700/30 to-indigo-700/40",
-  "from-amber-600/40 via-orange-700/30 to-rose-700/40",
+  // 方舟班级中心（已有封面图，此为兜底）
   "from-sky-600/40 via-blue-700/30 to-slate-700/40",
+  // Lunar X
+  "from-blue-600/40 via-indigo-700/30 to-purple-700/40",
+  // 山止组件 Vectra
+  "from-emerald-600/40 via-teal-700/30 to-cyan-700/40",
+  // Lunar Bot 3
+  "from-fuchsia-600/40 via-purple-700/30 to-indigo-700/40",
+  // Lunar Valley XI
+  "from-amber-600/40 via-orange-700/30 to-rose-700/40",
 ];
 
 const ProductCarousel = () => {

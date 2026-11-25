@@ -69,21 +69,44 @@ const firstSection = product.sections[0] ?? "overview";
       data-reveal-delay="180"
     >
       {
-        product.downloadHref && (
+        product.primaryHref ? (
+          <Button
+            href={product.primaryHref}
+            className="flex w-fit items-center gap-2"
+          >
+            <span class="text-lg">{product.primaryLabel ?? "在线使用"}</span>
+          </Button>
+        ) : product.downloadHref ? (
           <Button
             href={product.downloadHref}
             className="flex w-fit items-center gap-2"
           >
             <span class="text-lg">立即下载</span>
           </Button>
+        ) : null
+      }
+      {
+        product.primaryHref && product.downloadHref && (
+          <TransparentButton
+            href={product.downloadHref}
+            className="flex w-fit items-center gap-2"
+          >
+            <span class="text-lg">下载桌面端</span>
+          </TransparentButton>
         )
       }
-      <Button
-        href={`#${firstSection}`}
-        className="flex w-fit items-center gap-2"
-      >
-        <span class="text-lg">{product.downloadHref ? "了解场景" : C.learnMore}</span>
-      </Button>
+      {
+        !product.primaryHref && (
+          <Button
+            href={`#${firstSection}`}
+            className="flex w-fit items-center gap-2"
+          >
+            <span class="text-lg">
+              {product.downloadHref ? "了解场景" : C.learnMore}
+            </span>
+          </Button>
+        )
+      }
       <TransparentButton
         href="/#contact"
         className="flex w-fit items-center gap-2"

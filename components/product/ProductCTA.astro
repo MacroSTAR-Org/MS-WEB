@@ -22,8 +22,21 @@ const { product } = Astro.props;
     <p class="text-muted text-lg">{product.ctaSub}</p>
     <div class="mt-4 flex flex-col gap-4 md:flex-row">
       {
-        product.downloadHref && (
-          <Button href={product.downloadHref} className="flex w-fit items-center gap-2">
+        product.primaryHref && (
+          <Button
+            href={product.primaryHref}
+            className="flex w-fit items-center gap-2"
+          >
+            <span class="text-lg">{product.primaryLabel ?? "在线使用"}</span>
+          </Button>
+        )
+      }
+      {
+        !product.primaryHref && product.downloadHref && (
+          <Button
+            href={product.downloadHref}
+            className="flex w-fit items-center gap-2"
+          >
             <span class="text-lg">立即下载</span>
           </Button>
         )

@@ -157,6 +157,10 @@ export interface Product {
   badge?: string;
   /** 下载地址（可选，提供后 Hero 会显示"立即下载"） */
   downloadHref?: string;
+  /** 主入口（可选，优先于下载按钮显示，如在线使用） */
+  primaryHref?: string;
+  /** 主入口按钮文案（默认"在线使用"） */
+  primaryLabel?: string;
   /** 自定义 CTA 标题（可选） */
   ctaTitle?: string;
   /** 卡片背景图（可选）：填写后横向卡片会用图片替换默认渐变背景 */
@@ -271,7 +275,7 @@ export const TEAM: { heading: string; sub: string; members: Member[] } = {
     {
       name: "夏子涵",
       role: "首席运营官&创始人&董事长",
-      tags: ["全栈","Co-Founder"],
+      tags: ["全栈", "Co-Founder"],
       bio: "Hello World.",
       avatar: "https://q1.qlogo.cn/g?b=qq&nk=2473768771%7D&s=640",
     },
@@ -516,6 +520,7 @@ export const FOOTER = {
     {
       title: "服务",
       items: [
+        { text: "方舟班级中心", href: "/products/arkclasshub" },
         { text: "Lunar X", href: "/products/lunar-x" },
         { text: "Vectra", href: "/products/vectra" },
         { text: "Lunar Bot 3", href: "/products/lunar-bot-3" },
@@ -677,12 +682,420 @@ export const PRODUCT_THEMES: Record<string, ProductTheme> = {
       accentHover: "#0369a1",
     },
   },
+  /* 方舟班级中心 —— 亮蓝 / 天青（取自产品自身 UI 主色 #0a84ff） */
+  arkclasshub: {
+    dark: {
+      radial:
+        "radial-gradient(ellipse at left bottom, #0d2a52 0%, #131a2e 50%, #17294a 100%)",
+      ctaRadial: "radial-gradient(ellipse at center, #0d2a52 0%, #11121c 80%)",
+      grad1: "#0a84ff",
+      grad2: "#38bdf8",
+      grad3: "#7dd3fc",
+      accent: "#38bdf8",
+      accentHover: "#7dd3fc",
+    },
+    light: {
+      radial:
+        "radial-gradient(ellipse at left bottom, #dceafe 0%, #eff4fd 50%, #e3f4fd 100%)",
+      ctaRadial: "radial-gradient(ellipse at center, #dceafe 0%, #f7f8fb 80%)",
+      grad1: "#0066d6",
+      grad2: "#0891b2",
+      grad3: "#0369a1",
+      accent: "#007aff",
+      accentHover: "#0062cc",
+    },
+  },
 };
 
 /* ========== 产品列表（每个产品一个独立页面） ==========
  * 内容结构通过 sections 逐页声明；以下为占位内容，
  * 各产品页面将随沟通逐页完善。 */
 export const PRODUCTS: Product[] = [
+  {
+    slug: "arkclasshub",
+    title: "方舟班级中心",
+    subtitle: "一班一屏，家校同频",
+    tagline: "班级事务平台",
+    badge: "Web · Windows 桌面端已上线",
+    desc: "把班主任每天要做的琐事收进一屏：大板、考勤、作业、考试、消息、家长沟通，一个班就能用起来。",
+    downloadHref:
+      "https://github.com/EasonXia7369/ArkClassHub-Desktop/releases/latest",
+    primaryHref: "https://ach.macrostar.top",
+    primaryLabel: "在线使用",
+    image: "/images/arkclasshub/card-cover.webp",
+    theme: PRODUCT_THEMES["arkclasshub"],
+    sections: [
+      "overview",
+      "gallery",
+      "scenarios",
+      "features",
+      "specs",
+      "faq",
+      "links",
+    ],
+    overview: {
+      sub: "面向班主任与年级组的轻量班级事务平台，网页、桌面端、微信小程序同一套数据。",
+      paragraphs: [
+        "方舟班级中心（Ark Class Hub）把班级日常里最零碎、最容易漏的那部分工作集中到一处：早上在教室大屏上显示今天的课表、作业和出勤；课间用手机或一体机登记迟到请假；考完试把 Excel 成绩单直接粘进来出分析；家长有问题不必加老师微信，从班级码进来留言即可。所有端共用同一份数据，一处改动，大板和手机同时刷新。",
+        "它不是一套需要培训才能上手的教务系统。一个班、一位班主任、一份名单，导入之后当天就能用：考勤格子点一下就是一条记录，作业布置完立刻出现在教室大屏，成绩表格粘贴即出均分、及格率与排名。需要更多能力时再加——年级组汇总、多校管理、自托管部署都在同一套代码里。",
+      ],
+      advantage:
+        "与通用教务系统或一堆零散工具相比，方舟班级中心把「教室里的那台大屏」当成一等公民：大板不是报表页，而是学生每天真的会看的界面，作业、课表、出勤、值日、每日寄语都在上面。同时它把校园场景里最敏感的部分做实了——权限在服务端强制校验，班级之间相互隔离，家长只能看到自己孩子的数据，学生身份证信息只存不可逆校验值。轻量、可自托管、数据可整包导出，换系统不会被锁死。",
+    },
+    gallery: {
+      sub: "以下均为真实运行界面（示意班级与姓名为测试数据）。",
+      items: [
+        {
+          icon: "🖥️",
+          title: "教室大板",
+          desc: "大时钟、每日寄语、今日作业、出勤概况、课程与值日，一屏读完。",
+          image: "/images/arkclasshub/board.webp",
+        },
+        {
+          icon: "📈",
+          title: "考试成绩与趋势",
+          desc: "每次考试的均分、最高最低、及格与优秀率，趋势按科目分图对比。",
+          image: "/images/arkclasshub/exams.webp",
+        },
+        {
+          icon: "🧮",
+          title: "成绩矩阵录入",
+          desc: "Excel 复制一列直接粘贴自动填充，班名/校名一并导入。",
+          image: "/images/arkclasshub/import.webp",
+        },
+        {
+          icon: "💬",
+          title: "家长留言",
+          desc: "与班级群相互独立的第二条通道，回复自动引用原话。",
+          image: "/images/arkclasshub/messages.webp",
+        },
+      ],
+    },
+    scenarios: [
+      {
+        id: "daily",
+        eyebrow: "场景 01 · 班主任日常",
+        title: "一天里重复的动作，一次点完",
+        desc: "从早读到放学，登记、布置、统计都在同一条流水线上。",
+        items: [
+          {
+            icon: "🕐",
+            title: "教室大屏",
+            desc: "大时钟与日期、每日寄语、各科作业通栏大卡、今日课程、出勤概况、今日值日生。",
+          },
+          {
+            icon: "☑️",
+            title: "多时段考勤",
+            desc: "早/中/晚三个时段分别登记，出勤、请假、迟到、旷课、违纪五种状态加备注。",
+          },
+          {
+            icon: "📝",
+            title: "请假审批",
+            desc: "学生提交请假，老师批准后自动展开多天考勤，不必再逐日手动补。",
+          },
+          {
+            icon: "📄",
+            title: "周报导出",
+            desc: "按区间汇总考勤与作业未交，导出 Excel 或直接生成分享图片。",
+          },
+          {
+            icon: "📚",
+            title: "作业与会话",
+            desc: "作业布置、未交登记、历史作业按区间回看；编辑与删除都可追溯。",
+          },
+          {
+            icon: "🗓️",
+            title: "课表与值日",
+            desc: "按周编辑课程表，支持 CSES v1 导入导出；值日表按周排班，今日值日生上大屏。",
+          },
+          {
+            icon: "🧾",
+            title: "月度统计",
+            desc: "按天、按次两种口径并行统计，环比与个人明细都能下钻。",
+          },
+          {
+            icon: "🗂️",
+            title: "名单与账号",
+            desc: "单个添加或批量导入名单，邀请码激活老师账号，管理员可重置密码与转让班级。",
+          },
+        ],
+      },
+      {
+        id: "exams",
+        eyebrow: "场景 02 · 考试与成绩",
+        title: "成绩单不用再手抄一遍",
+        desc: "粘贴、识别、入矩阵、出分析，全流程在一次导入里完成。",
+        items: [
+          {
+            icon: "📋",
+            title: "矩阵录入",
+            desc: "每种科目一列、每名学生一行，留空即视为缺考，不计入统计。",
+          },
+          {
+            icon: "🤖",
+            title: "智能导入",
+            desc: "把 Excel 成绩单交给 AI 识别科目、分数、班级排名与校排名列组，确认后直接填充矩阵。",
+          },
+          {
+            icon: "🔢",
+            title: "班级／校排名",
+            desc: "班名与校名随成绩一起入库，单科与总分分别计算，可一键隐藏排名列。",
+          },
+          {
+            icon: "📊",
+            title: "科目分析",
+            desc: "每科均分、最高最低、及格率、优秀率与缺考人数，一眼看出这次哪科掉了。",
+          },
+          {
+            icon: "📉",
+            title: "趋势对比",
+            desc: "多场考试横向对比，按科目各一张图——同图归一化会重合，分图才看得清。",
+          },
+          {
+            icon: "✍️",
+            title: "AI 点评",
+            desc: "由老师手动触发，生成考试总结、学生点评与周总结；统计类数据默认脱敏后发送。",
+          },
+          {
+            icon: "👀",
+            title: "家长可见性控制",
+            desc: "家长端只呈现自己孩子的成绩与校排名，班级内部的横向比较不会外露。",
+          },
+          {
+            icon: "🏷️",
+            title: "名称与日期可改",
+            desc: "考试建好后名称和日期都能再改，录完发现写错不用重建一场。",
+          },
+        ],
+      },
+      {
+        id: "parents",
+        eyebrow: "场景 03 · 家校沟通",
+        title: "家长看得到，也只看到自己孩子",
+        desc: "不用建家长群，一个 6 位班级码就是入口。",
+        items: [
+          {
+            icon: "🔑",
+            title: "班级码入口",
+            desc: "大板上常驻家长入口卡，扫码或输入 6 位班级码即可进入班级视图。",
+          },
+          {
+            icon: "🕶️",
+            title: "全班脱敏视图",
+            desc: "未绑定前只能看脱敏名单与汇总，学生姓名仅显示姓氏加拼音首字母。",
+          },
+          {
+            icon: "🪪",
+            title: "学号 + 后六位绑定",
+            desc: "凭学号与身份证后六位核验身份，绑定后出勤、成绩、AI 点评只显示自己孩子。",
+          },
+          {
+            icon: "🔒",
+            title: "后六位不可逆存储",
+            desc: "仅保存 HMAC-SHA256 校验值，包括管理员在内都无法还原，也不会进入二维码或 AI 服务。",
+          },
+          {
+            icon: "💬",
+            title: "家长留言",
+            desc: "独立于班级群的消息通道，老师回复强制引用原话，避免答非所问。",
+          },
+          {
+            icon: "📈",
+            title: "孩子成绩与趋势",
+            desc: "家长可看自己孩子的各科成绩、校排名与逐次趋势，不看班内排名。",
+          },
+          {
+            icon: "🔔",
+            title: "消息推送",
+            desc: "老师的新留言通过小程序与浏览器推送触达，家长不必时时刷新。",
+          },
+          {
+            icon: "🎛️",
+            title: "班级码可重置",
+            desc: "老师可随时换一个新班级码，旧码立即失效，用于处理码外流的情况。",
+          },
+        ],
+      },
+      {
+        id: "anywhere",
+        eyebrow: "场景 04 · 换一台设备接着用",
+        title: "网页、桌面、一体机、小程序，同一份数据",
+        desc: "在哪台设备上打开都能接着做，不用先导出再导入。",
+        items: [
+          {
+            icon: "🌐",
+            title: "网页 / PWA",
+            desc: "浏览器直接用，可安装到主屏幕，离线仍能查看最近数据。",
+          },
+          {
+            icon: "🪟",
+            title: "Windows 桌面端",
+            desc: "Electron 壳，支持全屏投屏、窗口置顶、开机自启，导出走原生另存为。",
+          },
+          {
+            icon: "🖥️",
+            title: "一体机模式",
+            desc: "学生密码解锁后进入大板，考勤与作业登记按「学生」角色留痕。",
+          },
+          {
+            icon: "🔄",
+            title: "热同步",
+            desc: "桌面端随网页版更新，无需重新安装即可拿到最新界面。",
+          },
+          {
+            icon: "📱",
+            title: "微信小程序",
+            desc: "家长端小程序：主页看作业课表、留言、各科成绩；老师端可批请假、回留言，复用同一个后端。",
+          },
+          {
+            icon: "🏠",
+            title: "自托管",
+            desc: "附服务面板与自托管包，数据落在自己的服务器上，托盘宿主一键启停与备份。",
+          },
+        ],
+      },
+    ],
+    features: {
+      sub: "从权限到部署，都是在真实班级里跑出来的。",
+      items: [
+        {
+          icon: "🛡️",
+          title: "服务端强制鉴权",
+          desc: "权限不靠前端藏按钮，每个班级级接口都校验归属，越权请求一律拒绝。",
+        },
+        {
+          icon: "⚡",
+          title: "实时刷新",
+          desc: "数据变更经 WebSocket 广播，大板与手机自动重拉，不需要手动刷新。",
+        },
+        {
+          icon: "🎨",
+          title: "深色与移动适配",
+          desc: "深色模式、手机端两行工具栏与底导航，值班时单手也能登记。",
+        },
+        {
+          icon: "🧑‍💼",
+          title: "多校与年级组",
+          desc: "学校、年级、班级三层结构，年级主任只读汇总本年级，校管理员限本校。",
+        },
+        {
+          icon: "🗃️",
+          title: "数据可导出",
+          desc: "备份 JSON、D1 导出、周报 Excel、CSES 课表，随时能整包带走。",
+        },
+        {
+          icon: "📜",
+          title: "协议与隐私",
+          desc: "首访强制阅读服务协议与隐私政策，按账号记录同意版本，不同意即退出。",
+        },
+        {
+          icon: "🔍",
+          title: "操作留痕",
+          desc: "学生登记与大板操作写入审计日志，谁在什么身份下改了什么可追。",
+        },
+        {
+          icon: "🧩",
+          title: "不锁死",
+          desc: "开源实现，Cloudflare Workers 与自托管两种后端形态，随时可以搬走。",
+        },
+      ],
+    },
+    specs: {
+      sub: "当前线上版本的能力与运行环境。",
+      items: [
+        {
+          label: "产品形态",
+          value: "班级事务平台（网页 / PWA / Windows 桌面端 / 微信小程序）",
+        },
+        {
+          label: "面向对象",
+          value: "班主任 · 学生（一体机）· 家长 · 年级主任 · 校管理员",
+        },
+        { label: "核心板块", value: "大板 · 出勤 · 作业 · 考试 · 消息 · 管理" },
+        { label: "前端技术", value: "Vue 3 + TypeScript + Pinia + Vite" },
+        {
+          label: "后端技术",
+          value: "Hono on Cloudflare Workers + D1 + Durable Objects",
+        },
+        { label: "桌面端", value: "Electron · NSIS 安装包 · 前端热同步" },
+        {
+          label: "数据存储",
+          value: "边缘 SQLite（D1）/ 自托管本地 SQLite，迁移自动应用",
+        },
+        {
+          label: "实时通道",
+          value: "每班一个 Durable Object，WebSocket Hibernation",
+        },
+        { label: "部署方式", value: "Cloudflare 托管 · 自有服务器自托管" },
+        {
+          label: "版本",
+          value: "桌面端 v1.0.5 · 服务面板 v1.1.0 · Web 随 main 分支持续部署",
+        },
+      ],
+    },
+    faq: {
+      sub: "上手前最常被问到的几件事。",
+      items: [
+        {
+          q: "一个班能用吗？需要学校统一采购或部署吗？",
+          a: "不需要。一个班主任加一份名单就能开始用：导入名单、发邀请码给任课老师、把大板开到教室屏幕上。需要年级汇总或跨班管理时，再按学校、年级、班级的结构往上加，不用换系统。",
+        },
+        {
+          q: "学生的成绩和考勤数据放在哪里？",
+          a: "托管版存放在 Cloudflare 的边缘数据库（D1）；也可以用附带的服务器包自托管，数据落在自己的机器上，适合要求数据不出机房的场景。两种形态都支持整包导出备份，随时能带走。",
+        },
+        {
+          q: "家长能看到别的孩子的成绩吗？",
+          a: "不能。未绑定时家长只看到脱敏的全班视图；用学号加身份证后六位绑定后，出勤、成绩与 AI 点评都只显示自己孩子的内容。家长可见校排名，但看不到班内排名。",
+        },
+        {
+          q: "为什么要收集身份证后六位？会不会泄露？",
+          a: "因为这是家长与孩子之间唯一可靠、又不必收集完整身份证的核验凭据。系统只保存 HMAC-SHA256 计算出的不可逆校验值，原值不留存、不返回前端、不写入二维码、也不会进入任何 AI 请求；包括管理员在内都无法查看或还原。",
+        },
+        {
+          q: "AI 功能会自动把我的数据发出去吗？",
+          a: "不会。AI 只在教师手动点击时触发，统计类数据默认脱敏后发送；唯一的例外是「成绩单智能导入」，教师确认后才发送成绩单原文，用于识别列结构。",
+        },
+        {
+          q: "桌面端和网页版有什么区别？",
+          a: "桌面端是 Electron 壳，复用同一套前端，额外提供全屏投屏、窗口置顶、开机自启和原生另存为对话框。数据仍然直连服务端，不在本机落地。",
+        },
+      ],
+    },
+    links: {
+      sub: "直接用，或者拿走源码自己部署。",
+      items: [
+        {
+          text: "在线使用",
+          desc: "ach.macrostar.top · 浏览器打开即用，可装到主屏幕",
+          href: "https://ach.macrostar.top",
+        },
+        {
+          text: "Windows 桌面端",
+          desc: "GitHub Releases · NSIS 安装包",
+          href: "https://github.com/EasonXia7369/ArkClassHub-Desktop/releases/latest",
+        },
+        {
+          text: "前端源码",
+          desc: "ArkClassHub-Web · Vue 3 + Vite",
+          href: "https://github.com/EasonXia7369/ArkClassHub-Web",
+        },
+        {
+          text: "后端源码",
+          desc: "ArkClassHub-Server · Workers + D1 + Durable Objects",
+          href: "https://github.com/EasonXia7369/ArkClassHub-Server",
+        },
+        {
+          text: "桌面端源码",
+          desc: "ArkClassHub-Desktop · Electron 壳与热同步",
+          href: "https://github.com/EasonXia7369/ArkClassHub-Desktop",
+        },
+      ],
+    },
+    ctaTitle: "把一个班搬上大屏，从这里开始。",
+    ctaSub: "想在自己学校试跑一版？我们可以一起把名单、课表和第一块大板配好。",
+    email: "contact@macrostar.top",
+  },
   {
     slug: "lunar-x",
     title: "Lunar X",
@@ -899,7 +1312,8 @@ export const PRODUCTS: Product[] = [
       title: "你的桌面，不止这几种组件",
       desc: "一个 manifest.json 加一个 index.js 就是一个新组件。QuickJS 沙箱隔离，插件之间互不干扰，任何人都能写自己的桌面组件。",
       ctaText: "开始写插件",
-      ctaHref: "https://github.com/MacroSTAR-Org/Vectra/blob/main/PLUGIN_DEV.md",
+      ctaHref:
+        "https://github.com/MacroSTAR-Org/Vectra/blob/main/PLUGIN_DEV.md",
     },
     ctaSub: "准备好体验 Vectra 0.2 了吗？",
     email: "contact@macrostar.top",
@@ -998,7 +1412,8 @@ export const PRODUCTS: Product[] = [
       text: "意见反馈",
       href: "#",
     },
-    ctaSub: "想让 Windows 更优美？欢迎体验 Lunar Valley XI，或告诉我们你的想法。",
+    ctaSub:
+      "想让 Windows 更优美？欢迎体验 Lunar Valley XI，或告诉我们你的想法。",
     email: "contact@macrostar.top",
   },
 ];
